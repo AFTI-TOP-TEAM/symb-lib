@@ -24,9 +24,6 @@ public:
 
 	virtual void		SetArg(IFunction* arg) = 0;
 	virtual IFunction*	GetArg() const = 0;
-
-	virtual void		SetLabel(const std::string &label) = 0;
-	virtual std::string	GetLabel() const = 0;
 };
 
 }

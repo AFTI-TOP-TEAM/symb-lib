@@ -11,7 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="project_src\manager\FunctionManager.h" />
     <ClInclude Include="project_src\node\BinaryFunctionBase.h" />
+    <ClInclude Include="project_src\node\Const.h" />
     <ClInclude Include="project_src\node\IBinaryFunction.h" />
     <ClInclude Include="project_src\node\IFunction.h" />
     <ClInclude Include="project_src\node\IUnaryFunction.h" />
@@ -19,7 +21,9 @@
     <ClInclude Include="project_src\Types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="project_src\manager\FunctionManager.cpp" />
     <ClCompile Include="project_src\node\BinaryFunctionBase.cpp" />
+    <ClCompile Include="project_src\node\Const.cpp" />
     <ClCompile Include="project_src\node\UnaryFunctionBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

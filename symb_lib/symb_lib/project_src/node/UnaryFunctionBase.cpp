@@ -18,24 +18,14 @@ IFunction* UnaryFunctionBase::Execute()
 	return ExecuteImpl(m_arg->Execute());
 }
 //------------------------------------------------------------------------------
-void UnaryFunctionBase::SetValues(const std::vector<const Const*> &vals)
+void UnaryFunctionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
 {
 	m_arg->SetValues(vals);
 }
 //------------------------------------------------------------------------------
-Const* UnaryFunctionBase::Compute() const 
+Real UnaryFunctionBase::Compute() const 
 {
-	ComputeImpl(m_arg->Compute());
-}
-//------------------------------------------------------------------------------
-void UnaryFunctionBase::SetLabel(const std::string &label)
-{
-	m_label = label;
-}
-//------------------------------------------------------------------------------
-std::string UnaryFunctionBase::GetLabel() const
-{
-	return m_label;
+	return ComputeImpl(m_arg->Compute());
 }
 //------------------------------------------------------------------------------
 }

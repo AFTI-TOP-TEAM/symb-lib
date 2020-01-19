@@ -28,15 +28,15 @@ IFunction* BinaryFunctionBase::Execute() const
 	return ExecuteImpl(m_left->Execute(), m_right->Execute());
 }
 //-----------------------------------------------------------------------------------------
-void BinaryFunctionBase::SetValues(const std::vector<const Const*> &vals)
+void BinaryFunctionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
 {
 	m_left->SetValues(vals);
 	m_right->SetValues(vals);
 }
 //-----------------------------------------------------------------------------------------
-Const* BinaryFunctionBase::Compute() const 
+Real BinaryFunctionBase::Compute() const 
 {
-	m_right->Compute();
+	return ComputeImpl(m_left->Compute, m_right->Compute());
 }
 //-----------------------------------------------------------------------------------------
 }

@@ -8,13 +8,13 @@
 // Author:     glensand
 //------------------------------------------------------------------------------
 
-#include <vector>
+#include <unordered_map>
 #include <string>
+
+#include "project_src/Types.h"
 
 namespace symb
 {
-
-class Const;
 
 class IFunction
 {
@@ -23,16 +23,13 @@ public:
 	virtual ~IFunction() = default;
 	IFunction() = default;
 
-	virtual IFunction*	Derivative() const = 0;
+	virtual IFunction*	Derivate() const = 0;
 	virtual IFunction*	Integrate() const = 0;
 
 	virtual IFunction*	Execute() = 0;	
 
-	virtual void		SetLabel(const std::string &label) = 0;
-	virtual std::string	GetLabel() const = 0;
-
-	virtual void		SetValues(const std::vector<const Const*> &vals) = 0; 
-	virtual Const*		Compute() const = 0;
+	virtual void		SetValues(const std::unordered_map<std::string, Real> &vals) = 0; 
+	virtual Real		Compute() const = 0;
 };
 
 }
