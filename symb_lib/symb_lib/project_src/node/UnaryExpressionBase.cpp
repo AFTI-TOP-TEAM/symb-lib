@@ -2,20 +2,27 @@
 
 namespace symb
 {
-//------------------------------------------------------------------------------
-void UnaryExpressionBase::SetArg(IExpression* arg)
+//------------------------------------------------------------------------------	
+UnaryExpressionBase::UnaryExpressionBase(Expression& expr)
+	: m_arg(expr.release())
 {
-	m_arg = arg;
 }
 //------------------------------------------------------------------------------
-IExpression* UnaryExpressionBase::GetArg() const 
+void UnaryExpressionBase::SetArg(Expression& arg)
+{
+	m_arg = std::move(arg);
+}
+//------------------------------------------------------------------------------
+const Expression& UnaryExpressionBase::GetArg() const
 {
 	return m_arg;
 }
 //------------------------------------------------------------------------------
-IExpression* UnaryExpressionBase::Execute()
+Expression UnaryExpressionBase::Execute()
 {
-	return ExecuteImpl(m_arg->Execute());
+	m_arg = m_arg->Execute();
+	
+	return ExecuteImpl();
 }
 //------------------------------------------------------------------------------
 void UnaryExpressionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
@@ -26,6 +33,30 @@ void UnaryExpressionBase::SetValues(const std::unordered_map<std::string, Real> 
 Real UnaryExpressionBase::Compute() const 
 {
 	return ComputeImpl(m_arg->Compute());
+}
+//------------------------------------------------------------------------------
+Expression UnaryExpressionBase::Copy() const
+{
+	auto arg = m_arg->Copy();
+
+	return CopyImpl(arg);
+}
+//------------------------------------------------------------------------------
+Expression UnaryExpressionBase::Derivate() const
+{
+	auto derivative = m_arg->Derivate();
+
+	return DerivateImpl(derivative);
+}
+//------------------------------------------------------------------------------
+void UnaryExpressionBase::SetOptimized(bool optimized)
+{
+	m_optimized = optimized;
+}
+//------------------------------------------------------------------------------
+bool UnaryExpressionBase::IsOptimized() const
+{
+	return m_optimized;
 }
 //------------------------------------------------------------------------------
 }

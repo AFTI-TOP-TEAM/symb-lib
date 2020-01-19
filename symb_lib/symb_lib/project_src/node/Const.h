@@ -7,9 +7,9 @@
 // Date:       19.01.20
 // Author:     glensand
 //------------------------------------------------------------------------------
+#pragma once
 
 #include "IExpression.h"
-#include "../Types.h"
 
 namespace symb
 {
@@ -19,23 +19,24 @@ class Const : public IExpression
 public:
 
 	Const();
-	Const(Real val);
+	Const(const std::string& label, bool isVariable = false, Real val = 0);
 
-	virtual ~Const() = default; 
+	virtual ~Const() = default;
 
-	IExpression*	Derivate() const final;
-	IExpression*	Integrate() const final;
+	Expression Derivate() const final;
 
-	IExpression*	Execute() final;	
+	Expression Execute() final;	
 
-	void		SetLabel(const std::string &label);
-	std::string	GetLabel() const;
+	void			SetLabel(const std::string &label);
+	std::string		GetLabel() const;
 
-	void		SetValues(const std::unordered_map<std::string, Real> &vals) final; 
-	Const*		Compute() final;
+	void			SetValues(const std::unordered_map<std::string, Real> &vals) final; 
+	Real			Compute() const final;
 
+	bool			IsVariable() const;
+	
+	Expression Copy() const override;
 private:
-
 	Real			m_val;
 	std::string		m_label;
 

@@ -7,6 +7,7 @@
 // Date:       19.01.20
 // Author:     glensand
 //------------------------------------------------------------------------------
+#pragma once
 
 #include "IUnaryExpression.h"
 
@@ -16,22 +17,38 @@ namespace symb
 class UnaryExpressionBase : public IUnaryExpression
 {
 public:
-	void		SetArg(IExpression* arg) override;
-	IExpression*	GetArg() const override;
 
-	IExpression*	Execute() override;	
+	virtual ~UnaryExpressionBase() = default;
+	explicit UnaryExpressionBase(Expression& expr);
+	
+	void				SetArg(Expression& arg) final;
+	const Expression&	GetArg() const final;
 
-	void		SetValues(const std::unordered_map<std::string, Real> &vals) override; 
-	Real		Compute() const override;
+	void				SetValues(const std::unordered_map<std::string, Real> &vals) final; 
 
+	Real				Compute() const final;
+
+	Expression Execute() final;
+	
+	Expression Copy() const final;
+
+	Expression Derivate() const override;
+	
 protected:
-	virtual IExpression*	ExecuteImpl(const IExpression* argExecuted) const = 0;
-	virtual Real		ComputeImpl(const Const* arg) const = 0;
+	virtual Expression	DerivateImpl(Expression& expression) const = 0;
+	virtual Expression	CopyImpl(Expression& expression) const = 0;
 
+	virtual Expression	ExecuteImpl()= 0;
+
+	virtual Real			ComputeImpl(Real arg) const = 0;
+
+	void					SetOptimized(bool optimized);
+	bool					IsOptimized() const;
+	
 private:
-	IExpression*		m_arg;
+	Expression	m_arg;
 
-	std::string		m_label;
+	bool		m_optimized{ false };
 };
 
 }

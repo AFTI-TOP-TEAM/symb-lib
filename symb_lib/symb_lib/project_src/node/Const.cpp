@@ -1,5 +1,4 @@
-#include "UnaryExpressionBase.h"
-#include "project_src/manager/ExpressionManager.h"
+#include "Const.h"
 
 namespace symb
 {
@@ -10,27 +9,23 @@ Const::Const()
 {
 }
 //------------------------------------------------------------------------------
-Const::Const(Real val)
+Const::Const(const std::string& label, bool isVariable, Real val)
 	: m_val(val)
+	, m_label(label)
+	, m_isVariable(isVariable)
 {
 }
 //------------------------------------------------------------------------------
-IExpression* Const::Derivate() const 
+Expression Const::Derivate() const
 {
-	const Real val = m_isVariable ? 1.0 : 0.0;
+	if (m_isVariable == false) return std::make_unique<Const>("", false,  0);
 
-	auto derivative = FactoryManager::Instance().CreateExpression<Const>(val);
-	return derivative; // Const(0) or Pow(0, 0)??
+	return std::make_unique<Const>("", false, 1);
 }
 //------------------------------------------------------------------------------
-IExpression* Const::Integrate() const 
+Expression Const::Execute()
 {
-	return nullptr; // Pow(x, 1)
-}
-//------------------------------------------------------------------------------
-IExpression* Const::Execute()
-{
-	return this;
+	return Expression(this);
 }
 //------------------------------------------------------------------------------
 void Const::SetLabel(const std::string &label)
@@ -47,12 +42,22 @@ void Const::SetValues(const std::unordered_map<std::string, Real> &vals)
 {
 	if(vals.count(m_label) == 0) return;
 
-	m_val = vals[m_label];
+	m_val = vals.at(m_label);
 }
 //------------------------------------------------------------------------------
-Real Const::Compute()
+Real Const::Compute() const
 {
 	return m_val;
+}
+//------------------------------------------------------------------------------
+bool Const::IsVariable() const
+{
+	return m_isVariable;
+}
+//------------------------------------------------------------------------------
+Expression Const::Copy() const
+{
+	return std::make_unique<Const>(m_label, m_isVariable, m_val);
 }
 //------------------------------------------------------------------------------
 }

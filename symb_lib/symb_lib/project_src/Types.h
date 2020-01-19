@@ -7,8 +7,9 @@
 // Date:       19.01.20
 // Author:     glensand
 //------------------------------------------------------------------------------
+#pragma once
 
-namespace sim
+namespace symb
 {
 
 using Real = double;

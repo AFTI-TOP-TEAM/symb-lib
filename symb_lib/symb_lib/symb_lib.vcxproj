@@ -11,36 +11,43 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="project_src\manager\FunctionManager.h" />
     <ClInclude Include="project_src\node\BinaryExpressionBase.h" />
     <ClInclude Include="project_src\node\Const.h" />
+    <ClInclude Include="project_src\node\Diff.h" />
+    <ClInclude Include="project_src\node\Div.h" />
     <ClInclude Include="project_src\node\IBinaryExpression.h" />
     <ClInclude Include="project_src\node\IExpression.h" />
     <ClInclude Include="project_src\node\IUnaryExpression.h" />
+    <ClInclude Include="project_src\node\Prod.h" />
+    <ClInclude Include="project_src\node\Summ.h" />
     <ClInclude Include="project_src\node\UnaryExpressionBase.h" />
     <ClInclude Include="project_src\Types.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="project_src\manager\FunctionManager.cpp" />
     <ClCompile Include="project_src\node\BinaryExpressionBase.cpp" />
     <ClCompile Include="project_src\node\Const.cpp" />
+    <ClCompile Include="project_src\node\Diff.cpp" />
+    <ClCompile Include="project_src\node\Div.cpp" />
+    <ClCompile Include="project_src\node\Prod.cpp" />
+    <ClCompile Include="project_src\node\Summ.cpp" />
     <ClCompile Include="project_src\node\UnaryExpressionBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AFC50281-924B-4B80-B8BA-7E7B447BF83D}</ProjectGuid>
     <RootNamespace>symb_lib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>

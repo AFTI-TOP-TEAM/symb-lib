@@ -7,10 +7,9 @@
 // Date:       19.01.20
 // Author:     glensand
 //------------------------------------------------------------------------------
+#pragma once
 
 #include "IExpression.h"
-
-#include <string>
 
 namespace symb
 {
@@ -22,8 +21,8 @@ public:
 	IUnaryExpression() = default;
 	virtual ~IUnaryExpression() = default;
 
-	virtual void		SetArg(IExpression* arg) = 0;
-	virtual IExpression*	GetArg() const = 0;
+	virtual void				SetArg(Expression& arg) = 0;
+	virtual const Expression&	GetArg() const = 0;
 };
 
 }
