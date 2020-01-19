@@ -1,5 +1,5 @@
-#include "UnaryFunctionBase.h"
-#include "project_src/manager/FunctionManager.h"
+#include "UnaryExpressionBase.h"
+#include "project_src/manager/ExpressionManager.h"
 
 namespace symb
 {
@@ -15,20 +15,20 @@ Const::Const(Real val)
 {
 }
 //------------------------------------------------------------------------------
-IFunction* Const::Derivate() const 
+IExpression* Const::Derivate() const 
 {
 	const Real val = m_isVariable ? 1.0 : 0.0;
 
-	auto derivative = FactoryManager::Instance().CreateFunction<Const>(val);
+	auto derivative = FactoryManager::Instance().CreateExpression<Const>(val);
 	return derivative; // Const(0) or Pow(0, 0)??
 }
 //------------------------------------------------------------------------------
-IFunction* Const::Integrate() const 
+IExpression* Const::Integrate() const 
 {
 	return nullptr; // Pow(x, 1)
 }
 //------------------------------------------------------------------------------
-IFunction* Const::Execute()
+IExpression* Const::Execute()
 {
 	return this;
 }

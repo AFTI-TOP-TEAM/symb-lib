@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// FunctionManager.h
+// ExpressionManager.h
 // 
 // Copyright (c) 2020 Afti
 // All rights reserved.
@@ -8,7 +8,7 @@
 // Author:     glensand
 //------------------------------------------------------------------------------
 
-#include "project_src/node/IFunction.h"
+#include "project_src/node/IExpression.h"
 
 #include <vector>
 #include <memory>
@@ -16,31 +16,31 @@
 namespace symb
 {
 
-class FunctionManager final
+class ExpressionManager final
 {
 public:
 
-	~FunctionManager() = default; 
+	~ExpressionManager() = default; 
 
-	static FunctionManager&	Instance();
+	static ExpressionManager&	Instance();
 
 	template <typename T, typename... Args> 
-	IFunction*	CreateFunction();
+	IExpression*	CreateExpression();
 private:
 
-	FunctionManager() = default;
+	ExpressionManager() = default;
 
-	std::vector<std::unique_ptr<IFunction>>		m_functions;
+	std::vector<std::unique_ptr<IExpression>>		m_expressions;
 };
 
 template <typename T, typename... Args>
-IFunction* symb::FunctionManager::CreateFunction(Args&&... args)
+IExpression* symb::ExpressionManager::CreateExpression(Args&&... args)
 {
-	auto rowFunction = new T(std::forward<Args>(args)...);
-	if(nullptr != function = dynamic_cast<IFunction>(function))
-		m_functions.emplace_back(function);
+	auto rowExpression = new T(std::forward<Args>(args)...);
+	if(nullptr != expression = dynamic_cast<IExpression>(expression))
+		m_expressions.emplace_back(expression);
 	
-	return rowFunction;
+	return rowExpression;
 }
 
 }

@@ -1,29 +1,29 @@
-#include "UnaryFunctionBase.h"
+#include "UnaryExpressionBase.h"
 
 namespace symb
 {
 //------------------------------------------------------------------------------
-void UnaryFunctionBase::SetArg(IFunction* arg)
+void UnaryExpressionBase::SetArg(IExpression* arg)
 {
 	m_arg = arg;
 }
 //------------------------------------------------------------------------------
-IFunction* UnaryFunctionBase::GetArg() const 
+IExpression* UnaryExpressionBase::GetArg() const 
 {
 	return m_arg;
 }
 //------------------------------------------------------------------------------
-IFunction* UnaryFunctionBase::Execute()
+IExpression* UnaryExpressionBase::Execute()
 {
 	return ExecuteImpl(m_arg->Execute());
 }
 //------------------------------------------------------------------------------
-void UnaryFunctionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
+void UnaryExpressionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
 {
 	m_arg->SetValues(vals);
 }
 //------------------------------------------------------------------------------
-Real UnaryFunctionBase::Compute() const 
+Real UnaryExpressionBase::Compute() const 
 {
 	return ComputeImpl(m_arg->Compute());
 }

@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// IBinaryFunction.h
+// IUnaryExpression.h
 // 
 // Copyright (c) 2020 Afti
 // All rights reserved.
@@ -8,20 +8,22 @@
 // Author:     glensand
 //------------------------------------------------------------------------------
 
-#include "IFunction.h"
+#include "IExpression.h"
+
+#include <string>
 
 namespace symb
 {
 
-class IBinaryFunction : public IFunction
+class IUnaryExpression : public IExpression
 {
 public:
 
-	virtual void		SetLeftArg(IFunction* left) = 0;
-	virtual IFunction*	GetLeftArg() const = 0;
+	IUnaryExpression() = default;
+	virtual ~IUnaryExpression() = default;
 
-	virtual void		SetRightArg(IFunction* right) = 0;
-	virtual IFunction*	GetRightArg() const = 0;
+	virtual void		SetArg(IExpression* arg) = 0;
+	virtual IExpression*	GetArg() const = 0;
 };
 
 }

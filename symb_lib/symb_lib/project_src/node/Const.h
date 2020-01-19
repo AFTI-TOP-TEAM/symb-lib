@@ -8,13 +8,13 @@
 // Author:     glensand
 //------------------------------------------------------------------------------
 
-#include "IFunction.h"
+#include "IExpression.h"
 #include "../Types.h"
 
 namespace symb
 {
 
-class Const : public IFunction
+class Const : public IExpression
 {
 public:
 
@@ -23,10 +23,10 @@ public:
 
 	virtual ~Const() = default; 
 
-	IFunction*	Derivate() const final;
-	IFunction*	Integrate() const final;
+	IExpression*	Derivate() const final;
+	IExpression*	Integrate() const final;
 
-	IFunction*	Execute() final;	
+	IExpression*	Execute() final;	
 
 	void		SetLabel(const std::string &label);
 	std::string	GetLabel() const;

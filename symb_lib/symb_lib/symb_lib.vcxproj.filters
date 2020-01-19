@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="project_src\node\IFunction.h">
-      <Filter>node\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\IUnaryFunction.h">
-      <Filter>node\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\IBinaryFunction.h">
-      <Filter>node\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\BinaryFunctionBase.h">
-      <Filter>node\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\UnaryFunctionBase.h">
-      <Filter>node\Base</Filter>
-    </ClInclude>
     <ClInclude Include="project_src\Types.h" />
     <ClInclude Include="project_src\node\Const.h">
       <Filter>node\Impl</Filter>
     </ClInclude>
     <ClInclude Include="project_src\manager\FunctionManager.h">
       <Filter>manager\FunctionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\BinaryExpressionBase.h">
+      <Filter>node\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\UnaryExpressionBase.h">
+      <Filter>node\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\IBinaryExpression.h">
+      <Filter>node\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\IExpression.h">
+      <Filter>node\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\IUnaryExpression.h">
+      <Filter>node\interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,17 +45,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="project_src\node\BinaryFunctionBase.cpp">
-      <Filter>node\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="project_src\node\UnaryFunctionBase.cpp">
-      <Filter>node\Base</Filter>
-    </ClCompile>
     <ClCompile Include="project_src\node\Const.cpp">
       <Filter>node\Impl</Filter>
     </ClCompile>
     <ClCompile Include="project_src\manager\FunctionManager.cpp">
       <Filter>manager\FunctionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="project_src\node\BinaryExpressionBase.cpp">
+      <Filter>node\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="project_src\node\UnaryExpressionBase.cpp">
+      <Filter>node\Base</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

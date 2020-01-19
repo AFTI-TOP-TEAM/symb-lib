@@ -1,40 +1,40 @@
-#include "BinaryFunctionBase.h"
+#include "BinaryExpressionBase.h"
 
 namespace symb
 {
 //-----------------------------------------------------------------------------------------
-void BinaryFunctionBase::SetLeftArg(IFunction* left)
+void BinaryExpressionBase::SetLeftArg(IExpression* left)
 {
 	m_left = left;
 }
 //-----------------------------------------------------------------------------------------
-IFunction* BinaryFunctionBase::GetLeftArg() const 
+IExpression* BinaryExpressionBase::GetLeftArg() const 
 {
 	return m_left;
 }
 //-----------------------------------------------------------------------------------------
-void BinaryFunctionBase::SetRightArg(IFunction* right)
+void BinaryExpressionBase::SetRightArg(IExpression* right)
 {
 	m_right = right;
 }
 //-----------------------------------------------------------------------------------------
-IFunction* BinaryFunctionBase::GetRightArg() const 
+IExpression* BinaryExpressionBase::GetRightArg() const 
 {
 	return m_right;
 }
 //-----------------------------------------------------------------------------------------
-IFunction* BinaryFunctionBase::Execute() const 
+IExpression* BinaryExpressionBase::Execute() const 
 {
 	return ExecuteImpl(m_left->Execute(), m_right->Execute());
 }
 //-----------------------------------------------------------------------------------------
-void BinaryFunctionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
+void BinaryExpressionBase::SetValues(const std::unordered_map<std::string, Real> &vals)
 {
 	m_left->SetValues(vals);
 	m_right->SetValues(vals);
 }
 //-----------------------------------------------------------------------------------------
-Real BinaryFunctionBase::Compute() const 
+Real BinaryExpressionBase::Compute() const 
 {
 	return ComputeImpl(m_left->Compute, m_right->Compute());
 }

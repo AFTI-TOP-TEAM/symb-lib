@@ -12,19 +12,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="project_src\manager\FunctionManager.h" />
-    <ClInclude Include="project_src\node\BinaryFunctionBase.h" />
+    <ClInclude Include="project_src\node\BinaryExpressionBase.h" />
     <ClInclude Include="project_src\node\Const.h" />
-    <ClInclude Include="project_src\node\IBinaryFunction.h" />
-    <ClInclude Include="project_src\node\IFunction.h" />
-    <ClInclude Include="project_src\node\IUnaryFunction.h" />
-    <ClInclude Include="project_src\node\UnaryFunctionBase.h" />
+    <ClInclude Include="project_src\node\IBinaryExpression.h" />
+    <ClInclude Include="project_src\node\IExpression.h" />
+    <ClInclude Include="project_src\node\IUnaryExpression.h" />
+    <ClInclude Include="project_src\node\UnaryExpressionBase.h" />
     <ClInclude Include="project_src\Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="project_src\manager\FunctionManager.cpp" />
-    <ClCompile Include="project_src\node\BinaryFunctionBase.cpp" />
+    <ClCompile Include="project_src\node\BinaryExpressionBase.cpp" />
     <ClCompile Include="project_src\node\Const.cpp" />
-    <ClCompile Include="project_src\node\UnaryFunctionBase.cpp" />
+    <ClCompile Include="project_src\node\UnaryExpressionBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AFC50281-924B-4B80-B8BA-7E7B447BF83D}</ProjectGuid>

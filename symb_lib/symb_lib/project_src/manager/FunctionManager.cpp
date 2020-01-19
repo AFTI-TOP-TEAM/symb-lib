@@ -1,12 +1,12 @@
-#include "UnaryFunctionBase.h"
+#include "UnaryExpressionBase.h"
 
 
 namespace symb
 {
 //------------------------------------------------------------------------------
-FunctionManager& FunctionManager::Instance()
+ExpressionManager& ExpressionManager::Instance()
 {
-	static FunctionManager instance;
+	static ExpressionManager instance;
 
 	return instance;
 }

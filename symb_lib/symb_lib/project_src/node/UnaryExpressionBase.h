@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// UnaryFunctionBase.h
+// UnaryExpressionBase.h
 // 
 // Copyright (c) 2020 Afti
 // All rights reserved.
@@ -8,28 +8,28 @@
 // Author:     glensand
 //------------------------------------------------------------------------------
 
-#include "IUnaryFunction.h"
+#include "IUnaryExpression.h"
 
 namespace symb
 {
 
-class UnaryFunctionBase : public IUnaryFunction
+class UnaryExpressionBase : public IUnaryExpression
 {
 public:
-	void		SetArg(IFunction* arg) override;
-	IFunction*	GetArg() const override;
+	void		SetArg(IExpression* arg) override;
+	IExpression*	GetArg() const override;
 
-	IFunction*	Execute() override;	
+	IExpression*	Execute() override;	
 
 	void		SetValues(const std::unordered_map<std::string, Real> &vals) override; 
 	Real		Compute() const override;
 
 protected:
-	virtual IFunction*	ExecuteImpl(const IFunction* argExecuted) const = 0;
+	virtual IExpression*	ExecuteImpl(const IExpression* argExecuted) const = 0;
 	virtual Real		ComputeImpl(const Const* arg) const = 0;
 
 private:
-	IFunction*		m_arg;
+	IExpression*		m_arg;
 
 	std::string		m_label;
 };

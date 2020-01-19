@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// IFunction.h
+// IExpression.h
 // 
 // Copyright (c) 2020 Afti
 // All rights reserved.
@@ -16,17 +16,17 @@
 namespace symb
 {
 
-class IFunction
+class IExpression
 {
 public:
 
-	virtual ~IFunction() = default;
-	IFunction() = default;
+	virtual ~IExpression() = default;
+	IExpression() = default;
 
-	virtual IFunction*	Derivate() const = 0;
-	virtual IFunction*	Integrate() const = 0;
+	virtual IExpression*	Derivate() const = 0;
+	virtual IExpression*	Integrate() const = 0;
 
-	virtual IFunction*	Execute() = 0;	
+	virtual IExpression*	Execute() = 0;	
 
 	virtual void		SetValues(const std::unordered_map<std::string, Real> &vals) = 0; 
 	virtual Real		Compute() const = 0;

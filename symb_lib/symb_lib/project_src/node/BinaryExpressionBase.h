@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// BinaryFunctionBase.h
+// BinaryExpressionBase.h
 // 
 // Copyright (c) 2020 Afti
 // All rights reserved.
@@ -8,32 +8,32 @@
 // Author:     glensand
 //------------------------------------------------------------------------------
 
-#include "IBinaryFunction.h"
+#include "IBinaryExpression.h"
 
 namespace symb
 {
 
-class BinaryFunctionBase : public IBinaryFunction
+class BinaryExpressionBase : public IBinaryExpression
 {
 public:
-	void		SetLeftArg(IFunction* left) override;
-	IFunction*	GetLeftArg() const override;
+	void		SetLeftArg(IExpression* left) override;
+	IExpression*	GetLeftArg() const override;
 
-	void		SetRightArg(IFunction* right) override;
-	IFunction*	GetRightArg() const override;
+	void		SetRightArg(IExpression* right) override;
+	IExpression*	GetRightArg() const override;
 
-	IFunction*	Execute() override;	
+	IExpression*	Execute() override;	
 
 	void		SetValues(const std::unordered_map<std::string, Real> &vals) override; 
 	Real		Compute() const override;
 	
 protected:
-	virtual IFunction*	ExecuteImpl(IFunction* leftExecuted, IFunction* rightExecuted) const = 0;
+	virtual IExpression*	ExecuteImpl(IExpression* leftExecuted, IExpression* rightExecuted) const = 0;
 	virtual Real		ComputeImpl(Real left, Real right) const = 0;
 
 private:
-	IFunction*	m_left;
-	IFunction*	m_right;
+	IExpression*	m_left;
+	IExpression*	m_right;
 };
 
 }
