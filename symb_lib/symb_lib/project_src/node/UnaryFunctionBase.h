@@ -21,21 +21,17 @@ public:
 
 	IFunction*	Execute() override;	
 
-	void		SetValues(const std::vector<const Const*> &vals) override; 
-	Const*		Compute() const override;
-
-	void		SetLabel(const std::string &label);
-	std::string	GetLabel() const;
+	void		SetValues(const std::unordered_map<std::string, Real> &vals) override; 
+	Real		Compute() const override;
 
 protected:
 	virtual IFunction*	ExecuteImpl(const IFunction* argExecuted) const = 0;
-	virtual Const*		ComputeImpl(const Const* arg) const = 0;
+	virtual Real		ComputeImpl(const Const* arg) const = 0;
 
 private:
 	IFunction*		m_arg;
 
 	std::string		m_label;
-	bool			m_hasValues;
 };
 
 }

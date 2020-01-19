@@ -11,6 +11,6 @@
 namespace sim
 {
 
-using REAL = double;
+using Real = double;
 
 }

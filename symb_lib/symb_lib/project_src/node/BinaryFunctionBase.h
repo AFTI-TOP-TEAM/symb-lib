@@ -24,18 +24,16 @@ public:
 
 	IFunction*	Execute() override;	
 
-	void		SetValues(const std::vector<const Const*> &vals) override; 
-	Const*		Compute() const override;
+	void		SetValues(const std::unordered_map<std::string, Real> &vals) override; 
+	Real		Compute() const override;
 	
 protected:
 	virtual IFunction*	ExecuteImpl(IFunction* leftExecuted, IFunction* rightExecuted) const = 0;
-	virtual Const*		ComputeImpl(const Const* left, const Const* right) const = 0;
+	virtual Real		ComputeImpl(Real left, Real right) const = 0;
 
 private:
 	IFunction*	m_left;
 	IFunction*	m_right;
-
-	bool		m_hasValues;
 };
 
 }
