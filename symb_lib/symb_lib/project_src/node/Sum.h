@@ -16,16 +16,20 @@
 namespace symb
 {
 
-class Summ : public BinaryExpressionBase
+class Sum : public BinaryExpressionBase
 {
 
 public:
-	Summ(const Expression& left, const Expression& right);
-	Summ(Expression&& left, Expression&& right);
+	Sum(const Expression& left, const Expression& right);
+	Sum(Expression&& left, Expression&& right);
 	
-	virtual ~Summ() = default;
+	virtual ~Sum() = default;
+
+	// IFunction
+	Expression	RowExpression() const final;
 	
 protected:
+	// BinaryExpressionBase
 	Expression	ExecuteImpl() override;
 
 	Real		ComputeImpl(Real left, Real right) const override;

@@ -22,20 +22,27 @@ public:
 
 	virtual ~Const() = default;
 
+	// IExpression
 	Expression		Derivate() const final;
 
-	Expression		Execute() final;	
+	Expression		Execute() final;
+	
+	Expression		Copy() const final;
+	Expression		RowExpression() const final;
 
-	void			SetLabel(const std::string &label);
-	std::string		GetLabel() const;
+	bool			IsOptimized() const final;
+	void			SetOptimized(bool optimized) final;
 
-	void			SetValues(const std::unordered_map<std::string, Real> &vals) final; 
 	Real			Compute() const final;
 
+	void			SetValues(const std::unordered_map<std::string, Real>& vals) final;
+	
+	void			SetLabel(const std::string &label);
+	std::string		GetLabel() const;
+	void			SetVal(Real val);
+	
 	bool			IsVariable() const;
-	
-	Expression		Copy() const override;
-	
+
 private:
 	Real			m_val;
 	std::string		m_label;

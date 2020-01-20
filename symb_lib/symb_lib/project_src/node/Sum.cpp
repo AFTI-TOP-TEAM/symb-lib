@@ -1,40 +1,45 @@
-﻿#include "Summ.h"
+﻿#include "Sum.h"
 
 #include "Const.h"
 
 namespace symb
 {
 //------------------------------------------------------------------------------
-Summ::Summ(Expression&& left, Expression&& right)
+Sum::Sum(Expression&& left, Expression&& right)
 	: BinaryExpressionBase(std::move(left), std::move(right))
 {
 }
 //------------------------------------------------------------------------------
-Summ::Summ(const Expression& left, const Expression& right)
-	: Summ(left->Copy(), right->Copy())
+Sum::Sum(const Expression& left, const Expression& right)
+	: Sum(left->Copy(), right->Copy())
 {
 }
 //------------------------------------------------------------------------------
-Expression Summ::ExecuteImpl()
+Expression Sum::RowExpression() const
+{
+	return std::unique_ptr<Sum>();
+}
+//------------------------------------------------------------------------------
+Expression Sum::ExecuteImpl()
 {
 	return Copy();
 }
 //------------------------------------------------------------------------------
-Real Summ::ComputeImpl(Real left, Real right) const
+Real Sum::ComputeImpl(Real left, Real right) const
 {
 	return left + right;
 }
 //------------------------------------------------------------------------------
-Expression Summ::DerivateImpl(Expression&& left, Expression&& right) const
+Expression Sum::DerivateImpl(Expression&& left, Expression&& right) const
 {
-	auto result = std::make_unique<Summ>(std::move(left), std::move(right));
+	auto result = std::make_unique<Sum>(std::move(left), std::move(right));
 
 	return result->Execute();
 }
 //------------------------------------------------------------------------------
-Expression Summ::CopyImpl(Expression&& left, Expression&& right) const
+Expression Sum::CopyImpl(Expression&& left, Expression&& right) const
 {
-	return std::make_unique<Summ>(std::move(left), std::move(right));
+	return std::make_unique<Sum>(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------	
 }

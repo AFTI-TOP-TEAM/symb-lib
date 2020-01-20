@@ -13,6 +13,11 @@ Div::Div(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
+Expression Div::RowExpression() const
+{
+	return std::unique_ptr<Div>();
+}
+//------------------------------------------------------------------------------
 Real Div::ComputeImpl(Real left, Real right) const
 {
 	if (std::abs(right) < std::numeric_limits<Real>::epsilon()) return std::numeric_limits<Real>::infinity();

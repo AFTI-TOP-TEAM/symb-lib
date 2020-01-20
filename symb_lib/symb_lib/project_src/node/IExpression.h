@@ -36,6 +36,10 @@ public:
 	virtual Expression		Derivate() const = 0;
 
 	virtual Expression		Copy() const = 0;
+	virtual Expression		RowExpression() const = 0;
+	
+	virtual bool			IsOptimized() const = 0;
+	virtual void			SetOptimized(bool optimized) = 0;
 
 	//virtual Expression	Integrate() const = 0;
 };

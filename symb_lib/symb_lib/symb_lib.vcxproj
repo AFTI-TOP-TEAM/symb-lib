@@ -11,18 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="project_src\classlib\memory.h" />
     <ClInclude Include="project_src\manager\FunctionManager.h" />
     <ClInclude Include="project_src\node\BinaryExpressionBase.h" />
     <ClInclude Include="project_src\node\Const.h" />
     <ClInclude Include="project_src\node\Diff.h" />
     <ClInclude Include="project_src\node\Div.h" />
-    <ClInclude Include="project_src\node\IBinaryExpression.h" />
+    <ClInclude Include="project_src\node\ExpressionBase.h" />
     <ClInclude Include="project_src\node\IExpression.h" />
-    <ClInclude Include="project_src\node\IUnaryExpression.h" />
     <ClInclude Include="project_src\node\Prod.h" />
-    <ClInclude Include="project_src\node\Summ.h" />
+    <ClInclude Include="project_src\node\Sum.h" />
     <ClInclude Include="project_src\node\UnaryExpressionBase.h" />
+    <ClInclude Include="project_src\processor\BinaryProcessorBase.h" />
     <ClInclude Include="project_src\processor\ExpressionProcessor.h" />
+    <ClInclude Include="project_src\processor\IProcessorInner.h" />
+    <ClInclude Include="project_src\processor\SumProcessor.h" />
     <ClInclude Include="project_src\Types.h" />
   </ItemGroup>
   <ItemGroup>
@@ -30,9 +33,13 @@
     <ClCompile Include="project_src\node\Const.cpp" />
     <ClCompile Include="project_src\node\Diff.cpp" />
     <ClCompile Include="project_src\node\Div.cpp" />
+    <ClCompile Include="project_src\node\ExpressionBase.cpp" />
     <ClCompile Include="project_src\node\Prod.cpp" />
-    <ClCompile Include="project_src\node\Summ.cpp" />
+    <ClCompile Include="project_src\node\Sum.cpp" />
     <ClCompile Include="project_src\node\UnaryExpressionBase.cpp" />
+    <ClCompile Include="project_src\processor\BinaryProcessorBase.cpp" />
+    <ClCompile Include="project_src\processor\ExpressionProcessor.cpp" />
+    <ClCompile Include="project_src\processor\SumProcessor.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AFC50281-924B-4B80-B8BA-7E7B447BF83D}</ProjectGuid>

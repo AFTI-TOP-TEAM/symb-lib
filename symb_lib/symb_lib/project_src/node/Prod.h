@@ -23,8 +23,12 @@ public:
 	Prod(const Expression& left, const Expression& right);
 	
 	virtual ~Prod() = default;
+
+	// IFunction
+	Expression	RowExpression() const final;
 	
 protected:
+	// BinaryExpressionBase
 	Real		ComputeImpl(Real left, Real right) const override;
 
 	Expression	ExecuteImpl() override;

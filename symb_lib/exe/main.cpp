@@ -1,7 +1,7 @@
 #include <node/Const.h>
 #include <node/Diff.h>
 #include <node/Div.h>
-#include <node/Summ.h>
+#include <node/Sum.h>
 #include <node/Prod.h>
 
 #include "manager/FunctionManager.h"
@@ -16,11 +16,11 @@ int main()
 
 	const3 = const3->Execute();
 	
-	auto summ1 = symb::MakeExpression<symb::Summ>(const1, const2);
+	auto summ1 = symb::MakeExpression<symb::Sum>(const1, const2);
 
 	summ1 = summ1->Execute();
 	
-	const auto summ2 = symb::MakeExpression<symb::Summ>(const1, const3);
+	const auto summ2 = symb::MakeExpression<symb::Sum>(const1, const3);
 
 	const auto x = symb::MakeExpression<symb::Const>(1, "x", true);
 	

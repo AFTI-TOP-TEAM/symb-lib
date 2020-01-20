@@ -13,6 +13,11 @@ Diff::Diff(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
+Expression Diff::RowExpression() const
+{
+	return std::unique_ptr<Diff>();
+}
+//------------------------------------------------------------------------------
 Real Diff::ComputeImpl(Real left, Real right) const
 {
 	return left - right;

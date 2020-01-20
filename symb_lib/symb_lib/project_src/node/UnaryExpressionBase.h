@@ -9,22 +9,19 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "IUnaryExpression.h"
+#include "ExpressionBase.h"
 
 namespace symb
 {
 
-class UnaryExpressionBase : public IUnaryExpression
+class UnaryExpressionBase : public ExpressionBase
 {
 public:
 
 	virtual ~UnaryExpressionBase() = default;
 	explicit UnaryExpressionBase(Expression&& expr);
 	
-	void				SetArg(Expression&& arg) final;
-	void				SetArg(const Expression& arg) final;
-	const Expression&	GetArg() const final;
-
+	// IExpression
 	void				SetValues(const std::unordered_map<std::string, Real> &vals) final; 
 
 	Real				Compute() const final;
@@ -34,22 +31,25 @@ public:
 	Expression			Copy() const final;
 
 	Expression			Derivate() const override;
+
+	//Own methods
+	virtual void				SetArg(Expression&& arg) final;
+	virtual void				SetArg(const Expression& arg) final;
+	virtual const Expression&	GetArg() const final;
+	virtual Expression&&		ReleaseArg() final;
 	
 protected:
-	virtual Expression	DerivateImpl(Expression&& expression) const = 0;
-	virtual Expression	CopyImpl(Expression&& expression) const = 0;
+	virtual Expression			DerivateImpl(Expression&& expression) const = 0;
+	virtual Expression			CopyImpl(Expression&& expression) const = 0;
 
-	virtual Expression	ExecuteImpl()= 0;
+	virtual Expression			ExecuteImpl()= 0;
 
-	virtual Real		ComputeImpl(Real arg) const = 0;
-
-	void				SetOptimized(bool optimized);
-	bool				IsOptimized() const;
+	virtual Real				ComputeImpl(Real arg) const = 0;
 	
 private:
-	Expression	m_arg;
-
-	bool		m_optimized{ false };
+	Expression					m_arg;
 };
 
+using UnaryExpression = std::unique_ptr<UnaryExpressionBase>;
+	
 }

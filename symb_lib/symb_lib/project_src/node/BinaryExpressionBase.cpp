@@ -30,6 +30,16 @@ const Expression& BinaryExpressionBase::GetLeftArg() const
 	return m_left;
 }
 //-----------------------------------------------------------------------------------------
+Expression&& BinaryExpressionBase::ReleaseLeftArg()
+{
+	return std::move(m_left);
+}
+//-----------------------------------------------------------------------------------------
+Expression&& BinaryExpressionBase::ReleaseRightArg()
+{
+	return std::move(m_right);
+}
+//-----------------------------------------------------------------------------------------
 void BinaryExpressionBase::SetRightArg(Expression&& right)
 {
 	m_right = std::move(right);
@@ -70,16 +80,6 @@ Expression BinaryExpressionBase::Derivate() const
 Expression BinaryExpressionBase::Copy() const
 {
 	return CopyImpl(m_left->Copy(), m_right->Copy());
-}
-//-----------------------------------------------------------------------------------------
-void BinaryExpressionBase::SetOptimized(bool optimized)
-{
-	m_isOptimized = optimized;
-}
-//-----------------------------------------------------------------------------------------
-bool BinaryExpressionBase::IsOptimized() const
-{
-	return m_isOptimized;
 }
 //-----------------------------------------------------------------------------------------
 void BinaryExpressionBase::SetValues(const std::unordered_map<std::string, Real> &vals)

@@ -25,7 +25,11 @@ public:
 	
 	virtual ~Div() = default;
 
+	// IFunction
+	Expression	RowExpression() const final;
+	
 protected:
+	// BinaryExpressionBase
 	Real		ComputeImpl(Real left, Real right) const override;
 
 	Expression	ExecuteImpl() override;

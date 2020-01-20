@@ -6,22 +6,13 @@
       <Filter>node\Impl</Filter>
     </ClInclude>
     <ClInclude Include="project_src\node\BinaryExpressionBase.h">
-      <Filter>node\Base</Filter>
+      <Filter>node\base</Filter>
     </ClInclude>
     <ClInclude Include="project_src\node\UnaryExpressionBase.h">
-      <Filter>node\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\IBinaryExpression.h">
-      <Filter>node\interface</Filter>
+      <Filter>node\base</Filter>
     </ClInclude>
     <ClInclude Include="project_src\node\IExpression.h">
       <Filter>node\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\IUnaryExpression.h">
-      <Filter>node\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="project_src\node\Summ.h">
-      <Filter>node\Impl</Filter>
     </ClInclude>
     <ClInclude Include="project_src\node\Prod.h">
       <Filter>node\Impl</Filter>
@@ -38,6 +29,22 @@
     <ClInclude Include="project_src\manager\FunctionManager.h">
       <Filter>manager</Filter>
     </ClInclude>
+    <ClInclude Include="project_src\processor\IProcessorInner.h">
+      <Filter>processor\inner</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\processor\BinaryProcessorBase.h">
+      <Filter>processor\inner</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\ExpressionBase.h" />
+    <ClInclude Include="project_src\classlib\memory.h">
+      <Filter>classlib</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\processor\SumProcessor.h">
+      <Filter>processor\inner</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\node\Sum.h">
+      <Filter>node\Impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="node">
@@ -45,9 +52,6 @@
     </Filter>
     <Filter Include="node\interface">
       <UniqueIdentifier>{df9915d9-075f-475f-a533-2cc4acc87fef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="node\Base">
-      <UniqueIdentifier>{91f1f6da-31cd-4261-bc21-942893dcaa8a}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\Impl">
       <UniqueIdentifier>{4d5bac19-702c-48b9-bd25-5f20c99376a9}</UniqueIdentifier>
@@ -58,19 +62,25 @@
     <Filter Include="manager">
       <UniqueIdentifier>{d72573f7-1dcc-4483-94ec-1a942921a333}</UniqueIdentifier>
     </Filter>
+    <Filter Include="processor\inner">
+      <UniqueIdentifier>{c409df7b-1318-414b-8f83-ff79310f69ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classlib">
+      <UniqueIdentifier>{e0411c3a-7340-4469-8f32-15f91424655b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\base">
+      <UniqueIdentifier>{91f1f6da-31cd-4261-bc21-942893dcaa8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="project_src\node\Const.cpp">
       <Filter>node\Impl</Filter>
     </ClCompile>
     <ClCompile Include="project_src\node\BinaryExpressionBase.cpp">
-      <Filter>node\Base</Filter>
+      <Filter>node\base</Filter>
     </ClCompile>
     <ClCompile Include="project_src\node\UnaryExpressionBase.cpp">
-      <Filter>node\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="project_src\node\Summ.cpp">
-      <Filter>node\Impl</Filter>
+      <Filter>node\base</Filter>
     </ClCompile>
     <ClCompile Include="project_src\node\Prod.cpp">
       <Filter>node\Impl</Filter>
@@ -79,6 +89,19 @@
       <Filter>node\Impl</Filter>
     </ClCompile>
     <ClCompile Include="project_src\node\Div.cpp">
+      <Filter>node\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="project_src\processor\ExpressionProcessor.cpp">
+      <Filter>processor</Filter>
+    </ClCompile>
+    <ClCompile Include="project_src\processor\BinaryProcessorBase.cpp">
+      <Filter>processor\inner</Filter>
+    </ClCompile>
+    <ClCompile Include="project_src\node\ExpressionBase.cpp" />
+    <ClCompile Include="project_src\processor\SumProcessor.cpp">
+      <Filter>processor\inner</Filter>
+    </ClCompile>
+    <ClCompile Include="project_src\node\Sum.cpp">
       <Filter>node\Impl</Filter>
     </ClCompile>
   </ItemGroup>

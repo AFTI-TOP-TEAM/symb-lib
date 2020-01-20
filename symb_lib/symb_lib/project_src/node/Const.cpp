@@ -32,6 +32,11 @@ std::string Const::GetLabel() const
 	return m_label;
 }
 //------------------------------------------------------------------------------
+void Const::SetVal(Real val)
+{
+	m_val = val;
+}
+//------------------------------------------------------------------------------
 void Const::SetValues(const std::unordered_map<std::string, Real> &vals)
 {
 	if(vals.count(m_label) == 0) return;
@@ -52,6 +57,21 @@ bool Const::IsVariable() const
 Expression Const::Copy() const
 {
 	return std::make_unique<Const>(m_val, m_label, m_isVariable);
+}
+//------------------------------------------------------------------------------
+Expression Const::RowExpression() const
+{
+	return std::unique_ptr<Const>();
+}
+//------------------------------------------------------------------------------
+bool Const::IsOptimized() const
+{
+	return true;
+}
+//------------------------------------------------------------------------------
+void Const::SetOptimized(bool optimized)
+{
+	//ignore...
 }
 //------------------------------------------------------------------------------
 }

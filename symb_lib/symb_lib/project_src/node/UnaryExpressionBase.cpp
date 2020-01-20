@@ -23,6 +23,11 @@ const Expression& UnaryExpressionBase::GetArg() const
 	return m_arg;
 }
 //------------------------------------------------------------------------------
+Expression&& UnaryExpressionBase::ReleaseArg()
+{
+	return std::move(m_arg);
+}
+//------------------------------------------------------------------------------
 Expression UnaryExpressionBase::Execute()
 {
 	m_arg = m_arg->Execute();
@@ -50,16 +55,4 @@ Expression UnaryExpressionBase::Derivate() const
 	return DerivateImpl(m_arg->Derivate());
 }
 //------------------------------------------------------------------------------
-void UnaryExpressionBase::SetOptimized(bool optimized)
-{
-	m_optimized = optimized;
 }
-//------------------------------------------------------------------------------
-bool UnaryExpressionBase::IsOptimized() const
-{
-	return m_optimized;
-}
-//------------------------------------------------------------------------------
-}
-
-
