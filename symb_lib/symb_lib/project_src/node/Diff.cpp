@@ -20,7 +20,7 @@ Real Diff::ComputeImpl(Real left, Real right) const
 //------------------------------------------------------------------------------
 Expression Diff::ExecuteImpl()
 {
-	return Expression(this);
+	return Copy();
 }
 //------------------------------------------------------------------------------
 Expression Diff::DerivateImpl(Expression&& left, Expression&& right) const

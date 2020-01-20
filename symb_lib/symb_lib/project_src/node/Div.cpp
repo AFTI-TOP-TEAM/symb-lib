@@ -24,7 +24,7 @@ Expression Div::ExecuteImpl()
 {
 	// TODO::add pow...
 
-	return Expression(this);
+	return Copy();
 }
 //------------------------------------------------------------------------------
 Expression Div::DerivateImpl(Expression&& left, Expression&& right) const

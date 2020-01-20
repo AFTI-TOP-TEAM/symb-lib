@@ -19,7 +19,7 @@ Expression Const::Derivate() const
 //------------------------------------------------------------------------------
 Expression Const::Execute()
 {
-	return Expression(this);
+	return Copy();
 }
 //------------------------------------------------------------------------------
 void Const::SetLabel(const std::string &label)

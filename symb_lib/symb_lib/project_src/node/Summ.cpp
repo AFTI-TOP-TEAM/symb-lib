@@ -17,7 +17,7 @@ Summ::Summ(const Expression& left, const Expression& right)
 //------------------------------------------------------------------------------
 Expression Summ::ExecuteImpl()
 {
-	return Expression(this);
+	return Copy();
 }
 //------------------------------------------------------------------------------
 Real Summ::ComputeImpl(Real left, Real right) const

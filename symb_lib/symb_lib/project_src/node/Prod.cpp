@@ -22,7 +22,7 @@ Real Prod::ComputeImpl(Real left, Real right) const
 //------------------------------------------------------------------------------
 Expression Prod::ExecuteImpl()
 {
-	return Expression(nullptr);
+	return Copy();
 }
 //------------------------------------------------------------------------------
 Expression Prod::DerivateImpl(Expression&& left, Expression&& right) const
