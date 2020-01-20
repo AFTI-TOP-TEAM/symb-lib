@@ -31,11 +31,11 @@ public:
 	virtual void			SetValues(const std::unordered_map<std::string, Real>& vals) = 0;
 	virtual Real			Compute() const = 0;
 
-	virtual Expression	Execute() = 0;
+	virtual Expression		Execute() = 0;
 
-	virtual Expression	Derivate() const = 0;
+	virtual Expression		Derivate() const = 0;
 
-	virtual Expression	Copy() const = 0;
+	virtual Expression		Copy() const = 0;
 
 	//virtual Expression	Integrate() const = 0;
 };

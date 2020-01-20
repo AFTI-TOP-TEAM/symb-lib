@@ -20,7 +20,9 @@ class Diff : public BinaryExpressionBase
 {
 public:
 
-	Diff(Expression& left, Expression& right);
+	Diff(Expression&& left, Expression&& right);
+	Diff(const Expression& left, const Expression& right);
+	
 	virtual ~Diff() = default;
 
 protected:
@@ -28,9 +30,9 @@ protected:
 
 	Expression	ExecuteImpl() override;
 
-	Expression	DerivateImpl(Expression& left, Expression& right) const override;
+	Expression	DerivateImpl(Expression&& left, Expression&& right) const override;
 
-	Expression	CopyImpl(Expression& left, Expression& right) const override;
+	Expression	CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

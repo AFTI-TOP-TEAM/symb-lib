@@ -3,8 +3,13 @@
 namespace symb
 {
 //------------------------------------------------------------------------------
-Div::Div(Expression& left, Expression& right)
-	: BinaryExpressionBase(left, right)
+Div::Div(Expression&& left, Expression&& right)
+	: BinaryExpressionBase(std::move(left), std::move(right))
+{
+}
+//------------------------------------------------------------------------------
+Div::Div(const Expression& left, const Expression& right)
+	: Div(left->Copy(), right->Copy())
 {
 }
 //------------------------------------------------------------------------------
@@ -22,14 +27,14 @@ Expression Div::ExecuteImpl()
 	return Expression(this);
 }
 //------------------------------------------------------------------------------
-Expression Div::DerivateImpl(Expression& left, Expression& right) const
+Expression Div::DerivateImpl(Expression&& left, Expression&& right) const
 {
-	return CopyImpl(left, right);
+	return CopyImpl(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------
-Expression Div::CopyImpl(Expression& left, Expression& right) const
+Expression Div::CopyImpl(Expression&& left, Expression&& right) const
 {
-	return std::make_unique<Div>(left, right);
+	return std::make_unique<Div>(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------
 }

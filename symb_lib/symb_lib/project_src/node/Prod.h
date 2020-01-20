@@ -19,7 +19,9 @@ namespace symb
 class Prod : public BinaryExpressionBase
 {
 public:
-	Prod(Expression& left, Expression& right);
+	Prod(Expression&& left, Expression&& right);
+	Prod(const Expression& left, const Expression& right);
+	
 	virtual ~Prod() = default;
 	
 protected:
@@ -27,9 +29,9 @@ protected:
 
 	Expression	ExecuteImpl() override;
 
-	Expression	DerivateImpl(Expression& left, Expression& right) const override;
+	Expression	DerivateImpl(Expression&& left, Expression&& right) const override;
 
-	Expression	CopyImpl(Expression& left, Expression& right) const override;
+	Expression	CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

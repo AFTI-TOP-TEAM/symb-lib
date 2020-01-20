@@ -5,8 +5,13 @@
 namespace symb
 {
 //------------------------------------------------------------------------------
-Prod::Prod(Expression& left, Expression& right)
-	:BinaryExpressionBase(left, right)
+Prod::Prod(Expression&& left, Expression&& right)
+	:BinaryExpressionBase(std::move(left), std::move(right))
+{
+}
+//------------------------------------------------------------------------------
+Prod::Prod(const Expression& left, const Expression& right)
+	: Prod(left->Copy(), right->Copy())
 {
 }
 //------------------------------------------------------------------------------
@@ -20,22 +25,19 @@ Expression Prod::ExecuteImpl()
 	return Expression(nullptr);
 }
 //------------------------------------------------------------------------------
-Expression Prod::DerivateImpl(Expression& left, Expression& right) const
+Expression Prod::DerivateImpl(Expression&& left, Expression&& right) const
 {
-	auto leftProd = std::make_unique<Prod>(left, GetRightArg()->Copy());
-	auto rightProd = std::make_unique<Prod>(GetLeftArg()->Copy(), right);
+	auto leftProd = std::make_unique<Prod>(std::move(left), GetRightArg()->Copy());
+	auto rightProd = std::make_unique<Prod>(GetLeftArg()->Copy(), std::move(right));
 
-	auto leftE = Expression(leftProd.release());
-	auto rightE = Expression(rightProd.release());
-	
-	auto derivative = std::make_unique<Summ>(leftE, rightE);
+	auto derivative = std::make_unique<Summ>(std::move(leftProd), std::move(rightProd));
 
 	return derivative->Execute();
 }
 //------------------------------------------------------------------------------
-Expression Prod::CopyImpl(Expression& left, Expression& right) const
+Expression Prod::CopyImpl(Expression&& left, Expression&& right) const
 {
-	return std::make_unique<Prod>(left, right);
+	return std::make_unique<Prod>(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------	
 }

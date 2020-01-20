@@ -16,16 +16,15 @@ namespace symb
 
 class Const : public IExpression
 {
-public:
 
-	Const();
-	Const(const std::string& label, bool isVariable = false, Real val = 0);
+public:
+	Const(Real val = 0, const std::string& label = "", bool isVariable = false);
 
 	virtual ~Const() = default;
 
-	Expression Derivate() const final;
+	Expression		Derivate() const final;
 
-	Expression Execute() final;	
+	Expression		Execute() final;	
 
 	void			SetLabel(const std::string &label);
 	std::string		GetLabel() const;
@@ -35,7 +34,8 @@ public:
 
 	bool			IsVariable() const;
 	
-	Expression Copy() const override;
+	Expression		Copy() const override;
+	
 private:
 	Real			m_val;
 	std::string		m_label;

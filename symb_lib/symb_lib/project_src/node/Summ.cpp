@@ -5,8 +5,13 @@
 namespace symb
 {
 //------------------------------------------------------------------------------
-Summ::Summ(Expression& left, Expression& right)
-	: BinaryExpressionBase(left, right)
+Summ::Summ(Expression&& left, Expression&& right)
+	: BinaryExpressionBase(std::move(left), std::move(right))
+{
+}
+//------------------------------------------------------------------------------
+Summ::Summ(const Expression& left, const Expression& right)
+	: Summ(left->Copy(), right->Copy())
 {
 }
 //------------------------------------------------------------------------------
@@ -20,16 +25,16 @@ Real Summ::ComputeImpl(Real left, Real right) const
 	return left + right;
 }
 //------------------------------------------------------------------------------
-Expression Summ::DerivateImpl(Expression& left, Expression& right) const
+Expression Summ::DerivateImpl(Expression&& left, Expression&& right) const
 {
-	auto result = std::make_unique<Summ>(left, right);
+	auto result = std::make_unique<Summ>(std::move(left), std::move(right));
 
 	return result->Execute();
 }
 //------------------------------------------------------------------------------
-Expression Summ::CopyImpl(Expression& left, Expression& right) const
+Expression Summ::CopyImpl(Expression&& left, Expression&& right) const
 {
-	return std::make_unique<Summ>(left, right);
+	return std::make_unique<Summ>(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------	
 }

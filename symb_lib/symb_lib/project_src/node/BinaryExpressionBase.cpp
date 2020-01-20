@@ -4,15 +4,25 @@
 namespace symb
 {
 //-----------------------------------------------------------------------------------------	
-BinaryExpressionBase::BinaryExpressionBase(Expression& left, Expression& right)
-	: m_left(left.release())
-	, m_right(right.release())
+BinaryExpressionBase::BinaryExpressionBase(Expression&& left, Expression&& right)
+	: m_left(std::move(left))
+	, m_right(std::move(right))
 {
 }
 //-----------------------------------------------------------------------------------------
-void BinaryExpressionBase::SetLeftArg(Expression& left)
+void BinaryExpressionBase::SetLeftArg(Expression&& left)
 {
 	m_left = std::move(left);
+}
+//-----------------------------------------------------------------------------------------
+void BinaryExpressionBase::SetLeftArg(const Expression& left)
+{
+	SetLeftArg(left->Copy());
+}
+//-----------------------------------------------------------------------------------------
+void BinaryExpressionBase::SetRightArg(const Expression& right)
+{
+	SetRightArg(right->Copy());
 }
 //-----------------------------------------------------------------------------------------
 const Expression& BinaryExpressionBase::GetLeftArg() const
@@ -20,7 +30,7 @@ const Expression& BinaryExpressionBase::GetLeftArg() const
 	return m_left;
 }
 //-----------------------------------------------------------------------------------------
-void BinaryExpressionBase::SetRightArg(Expression& right)
+void BinaryExpressionBase::SetRightArg(Expression&& right)
 {
 	m_right = std::move(right);
 }
@@ -46,7 +56,7 @@ Expression BinaryExpressionBase::Execute()
 
 		const auto result = ComputeImpl(leftRes, rightRes);
 
-		return std::make_unique<Const>("", false, result);
+		return std::make_unique<Const>(result);
 	}
 	
 	return ExecuteImpl();
@@ -54,18 +64,12 @@ Expression BinaryExpressionBase::Execute()
 //-----------------------------------------------------------------------------------------
 Expression BinaryExpressionBase::Derivate() const
 {
-	auto leftDerivative = m_left->Derivate();
-	auto rightDerivative = m_right->Derivate();
-
-	return DerivateImpl(leftDerivative, rightDerivative);
+	return DerivateImpl(m_left->Derivate(), m_right->Derivate());
 }
 //-----------------------------------------------------------------------------------------
 Expression BinaryExpressionBase::Copy() const
 {
-	auto left = m_left->Derivate();
-	auto right = m_right->Derivate();
-
-	return CopyImpl(left, right);
+	return CopyImpl(m_left->Copy(), m_right->Copy());
 }
 //-----------------------------------------------------------------------------------------
 void BinaryExpressionBase::SetOptimized(bool optimized)

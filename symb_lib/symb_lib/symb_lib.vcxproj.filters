@@ -32,6 +32,12 @@
     <ClInclude Include="project_src\node\Div.h">
       <Filter>node\Impl</Filter>
     </ClInclude>
+    <ClInclude Include="project_src\processor\ExpressionProcessor.h">
+      <Filter>processor</Filter>
+    </ClInclude>
+    <ClInclude Include="project_src\manager\FunctionManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="node">
@@ -45,6 +51,12 @@
     </Filter>
     <Filter Include="node\Impl">
       <UniqueIdentifier>{4d5bac19-702c-48b9-bd25-5f20c99376a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="processor">
+      <UniqueIdentifier>{95983b8e-64b8-48ed-97fa-0892bd67563e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{d72573f7-1dcc-4483-94ec-1a942921a333}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,9 @@ class Div : public BinaryExpressionBase
 {
 public:
 
-	Div(Expression& left, Expression& right);
+	Div(Expression&& left, Expression&& right);
+	Div(const Expression& left, const Expression& right);
+	
 	virtual ~Div() = default;
 
 protected:
@@ -28,9 +30,9 @@ protected:
 
 	Expression	ExecuteImpl() override;
 
-	Expression	DerivateImpl(Expression& left, Expression& right) const override;
+	Expression	DerivateImpl(Expression&& left, Expression&& right) const override;
 
-	Expression	CopyImpl(Expression& left, Expression& right) const override;
+	Expression	CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

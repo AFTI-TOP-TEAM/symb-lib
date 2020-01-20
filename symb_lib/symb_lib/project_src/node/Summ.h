@@ -20,7 +20,9 @@ class Summ : public BinaryExpressionBase
 {
 
 public:
-	Summ(Expression& left, Expression& right);
+	Summ(const Expression& left, const Expression& right);
+	Summ(Expression&& left, Expression&& right);
+	
 	virtual ~Summ() = default;
 	
 protected:
@@ -28,9 +30,9 @@ protected:
 
 	Real		ComputeImpl(Real left, Real right) const override;
 
-	Expression	DerivateImpl(Expression& left, Expression& right) const override;
+	Expression	DerivateImpl(Expression&& left, Expression&& right) const override;
 
-	Expression	CopyImpl(Expression& left, Expression& right) const override;
+	Expression	CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

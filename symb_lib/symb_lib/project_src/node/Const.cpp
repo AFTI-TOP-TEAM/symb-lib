@@ -3,13 +3,7 @@
 namespace symb
 {
 //------------------------------------------------------------------------------
-Const::Const()
-	: m_val(0.0)
-	, m_isVariable(false)
-{
-}
-//------------------------------------------------------------------------------
-Const::Const(const std::string& label, bool isVariable, Real val)
+Const::Const(Real val, const std::string& label, bool isVariable)
 	: m_val(val)
 	, m_label(label)
 	, m_isVariable(isVariable)
@@ -18,9 +12,9 @@ Const::Const(const std::string& label, bool isVariable, Real val)
 //------------------------------------------------------------------------------
 Expression Const::Derivate() const
 {
-	if (m_isVariable == false) return std::make_unique<Const>("", false,  0);
-
-	return std::make_unique<Const>("", false, 1);
+	const auto val = m_isVariable ? 1.0 : 0.0;
+	
+	return std::make_unique<Const>(val);
 }
 //------------------------------------------------------------------------------
 Expression Const::Execute()
@@ -57,7 +51,7 @@ bool Const::IsVariable() const
 //------------------------------------------------------------------------------
 Expression Const::Copy() const
 {
-	return std::make_unique<Const>(m_label, m_isVariable, m_val);
+	return std::make_unique<Const>(m_val, m_label, m_isVariable);
 }
 //------------------------------------------------------------------------------
 }

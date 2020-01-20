@@ -3,14 +3,19 @@
 namespace symb
 {
 //------------------------------------------------------------------------------	
-UnaryExpressionBase::UnaryExpressionBase(Expression& expr)
-	: m_arg(expr.release())
+UnaryExpressionBase::UnaryExpressionBase(Expression&& expr)
+	: m_arg(std::move(expr))
 {
 }
 //------------------------------------------------------------------------------
-void UnaryExpressionBase::SetArg(Expression& arg)
+void UnaryExpressionBase::SetArg(Expression&& arg)
 {
 	m_arg = std::move(arg);
+}
+//------------------------------------------------------------------------------
+void UnaryExpressionBase::SetArg(const Expression& arg)
+{
+	SetArg(arg->Copy());
 }
 //------------------------------------------------------------------------------
 const Expression& UnaryExpressionBase::GetArg() const
@@ -37,16 +42,12 @@ Real UnaryExpressionBase::Compute() const
 //------------------------------------------------------------------------------
 Expression UnaryExpressionBase::Copy() const
 {
-	auto arg = m_arg->Copy();
-
-	return CopyImpl(arg);
+	return CopyImpl(m_arg->Copy());
 }
 //------------------------------------------------------------------------------
 Expression UnaryExpressionBase::Derivate() const
 {
-	auto derivative = m_arg->Derivate();
-
-	return DerivateImpl(derivative);
+	return DerivateImpl(m_arg->Derivate());
 }
 //------------------------------------------------------------------------------
 void UnaryExpressionBase::SetOptimized(bool optimized)
