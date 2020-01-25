@@ -4,7 +4,7 @@
 #include <node/Sum.h>
 #include <node/Prod.h>
 
-#include "manager/FunctionManager.h"
+#include "manager/ExpressionManager.h"
 #include "node/Const.h"
 
 int main()
