@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="node">
+      <UniqueIdentifier>{8f9db6f3-6928-4d1a-bdaa-d7e8804a251c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{c01c653f-eb98-4c63-ac9e-627ece047f0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="processor">
+      <UniqueIdentifier>{40ccdb65-7286-4d29-9268-fe08dac7a1a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="processor\interface">
+      <UniqueIdentifier>{1fbf7ff5-cceb-4cff-9b35-8e2ba8a0f771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="processor\impl">
+      <UniqueIdentifier>{41d7f862-e9a0-4d87-aa84-6c6f46c7f537}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\interface">
+      <UniqueIdentifier>{ea476553-9136-45bd-abd8-08a972fa9e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\base">
+      <UniqueIdentifier>{a96b2d16-573c-4497-8ec0-f6f797b559eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\impl">
+      <UniqueIdentifier>{48d405fa-5c84-4048-bce5-dce9fa0a4ddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{d45a8af9-281d-4845-87c0-09ef43dc3fc1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\symblib\processor\BinaryProcessorBase.cpp">
+      <Filter>processor\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\processor\SumProcessor.cpp">
+      <Filter>processor\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\processor\ExpressionProcessor.cpp">
+      <Filter>processor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Const.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Diff.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Div.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Equality.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Prod.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Sum.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Var.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\UnaryExpressionBase.cpp">
+      <Filter>node\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\ExpressionBase.cpp">
+      <Filter>node\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\BinaryExpressionBase.cpp">
+      <Filter>node\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\symblib\processor\IProcessorInner.h">
+      <Filter>processor\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\processor\BinaryProcessorBase.h">
+      <Filter>processor\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\processor\SumProcessor.h">
+      <Filter>processor\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\processor\ExpressionProcessor.h">
+      <Filter>processor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\classlib\memory.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\classlib\utils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\IExpression.h">
+      <Filter>node\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Const.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Diff.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Div.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Equality.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Prod.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Sum.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Var.h">
+      <Filter>node\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\UnaryExpressionBase.h">
+      <Filter>node\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\ExpressionBase.h">
+      <Filter>node\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\BinaryExpressionBase.h">
+      <Filter>node\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\manager\ExpressionManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\Types.h" />
+  </ItemGroup>
+</Project>
