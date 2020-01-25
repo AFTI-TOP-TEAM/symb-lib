@@ -7,4 +7,11 @@
 /symb_lib/exe/Debug
 /symb_lib/symb_lib/Debug
 /symb_lib/Debug
+/build/vs2019/symb/x64
+/build/vs2019/symb/Debug
+/build/vs2019/symb/.vs
+/build/vs2019/symb/symb.vcxproj.user
+/build/vs2019/exe/x64
+/build/vs2019/exe/exe.vcxproj.user
+/symb_lib/Debug
 /build/vs2019/symb/.vs
