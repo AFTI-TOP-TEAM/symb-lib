@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\..\src\symblib\node\NodeIterator.cpp">
       <Filter>node\iterator</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\Neg.cpp">
+      <Filter>node\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\symblib\processor\IProcessorInner.h">
@@ -134,6 +137,9 @@
     <ClInclude Include="..\..\..\src\symblib\Types.h" />
     <ClInclude Include="..\..\..\src\symblib\node\NodeIterator.h">
       <Filter>node\iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\Neg.h">
+      <Filter>node\impl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

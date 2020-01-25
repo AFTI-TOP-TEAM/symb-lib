@@ -144,6 +144,7 @@
     <ClCompile Include="..\..\..\src\symblib\node\Div.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Equality.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\ExpressionBase.cpp" />
+    <ClCompile Include="..\..\..\src\symblib\node\Neg.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\NodeIterator.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Prod.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Sum.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="..\..\..\src\symblib\node\Equality.h" />
     <ClInclude Include="..\..\..\src\symblib\node\ExpressionBase.h" />
     <ClInclude Include="..\..\..\src\symblib\node\IExpression.h" />
+    <ClInclude Include="..\..\..\src\symblib\node\Neg.h" />
     <ClInclude Include="..\..\..\src\symblib\node\NodeIterator.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Prod.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Sum.h" />

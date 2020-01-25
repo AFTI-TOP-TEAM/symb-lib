@@ -6,7 +6,6 @@ namespace symb
 Neg::Neg(Expression&& expr)
     : UnaryExpressionBase(std::move(expr))
 {
-
 }
 //------------------------------------------------------------------------------
 std::string Neg::GetType() const
