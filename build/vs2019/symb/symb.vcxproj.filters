@@ -28,6 +28,9 @@
     <Filter Include="manager">
       <UniqueIdentifier>{d45a8af9-281d-4845-87c0-09ef43dc3fc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="node\iterator">
+      <UniqueIdentifier>{f6877f8b-5fcf-4f8a-8439-83c892ddb650}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\symblib\processor\BinaryProcessorBase.cpp">
@@ -68,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\symblib\node\BinaryExpressionBase.cpp">
       <Filter>node\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\symblib\node\NodeIterator.cpp">
+      <Filter>node\iterator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,5 +132,8 @@
       <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\symblib\Types.h" />
+    <ClInclude Include="..\..\..\src\symblib\node\NodeIterator.h">
+      <Filter>node\iterator</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

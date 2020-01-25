@@ -41,4 +41,19 @@ Expression BinaryProcessorBase::Simplify(const Expression& expr) const
 	return SimplifyImpl(std::move(rowExpr));
 }
 //------------------------------------------------------------------------------	
+Expression BinaryProcessorBase::Derivate(const Expression& expr) const
+{
+	return Expression();
+}
+//------------------------------------------------------------------------------	
+Expression BinaryProcessorBase::Integrate(const Expression& expr) const
+{
+	return Expression();
+}
+//------------------------------------------------------------------------------	
+Real BinaryProcessorBase::Compute(const Expression& expr) const
+{
+	return 0;
+}
+//------------------------------------------------------------------------------	
 }

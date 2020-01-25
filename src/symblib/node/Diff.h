@@ -16,17 +16,24 @@
 namespace symb
 {
 
-class Diff : public BinaryExpressionBase
+class Diff final : public BinaryExpressionBase
 {
 public:
 
+	// Diff construction/destruction
 	Diff(Expression&& left, Expression&& right);
 	Diff(const Expression& left, const Expression& right);
-	
+
+	Diff(const Diff&) = delete;
+	Diff(Diff&&) = delete;
+
+	Diff operator=(Diff&&) = delete;
+	Diff operator=(const Diff&) = delete;
+		
 	virtual ~Diff() = default;
 
 	// IFunction
-	Expression		RowExpression() const final;
+	Expression		RowExpression() const override;
 
 	std::string		GetType() const override;
 protected:
