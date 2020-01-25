@@ -18,8 +18,15 @@ class Var : public IExpression
 {
 
 public:
-	Var(const std::string& label, Real val = 0, bool isVariable = true);
+	//Var construction/destruction
+	explicit Var(const std::string& label, Real val = 0, bool isVariable = true);
 
+	Var(const Var&) = delete;
+	Var(Var&&) = delete;
+
+	Var operator=(Var&&) = delete;
+	Var operator=(const Var&) = delete;
+	
 	virtual ~Var() = default;
 
 	// IExpression	
@@ -38,6 +45,7 @@ public:
 	bool			IsVariable() const;
 
 	std::string		GetType() const override;
+	
 private:
 	Real			m_val;
 	std::string		m_label;

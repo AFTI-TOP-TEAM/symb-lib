@@ -26,13 +26,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -144,6 +144,7 @@
     <ClCompile Include="..\..\..\src\symblib\node\Div.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Equality.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\ExpressionBase.cpp" />
+    <ClCompile Include="..\..\..\src\symblib\node\NodeIterator.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Prod.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Sum.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\UnaryExpressionBase.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="..\..\..\src\symblib\node\Equality.h" />
     <ClInclude Include="..\..\..\src\symblib\node\ExpressionBase.h" />
     <ClInclude Include="..\..\..\src\symblib\node\IExpression.h" />
+    <ClInclude Include="..\..\..\src\symblib\node\NodeIterator.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Prod.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Sum.h" />
     <ClInclude Include="..\..\..\src\symblib\node\UnaryExpressionBase.h" />

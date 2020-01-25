@@ -1,11 +1,9 @@
-#include <node/Var.h>
-#include <node/Diff.h>
-#include <node/Div.h>
-#include <node/Sum.h>
-#include <node/Prod.h>
-
-#include "manager/ExpressionManager.h"
-#include "node/Const.h"
+#include "../symblib/node/Sum.h"
+#include "../symblib/node/Var.h"
+#include "../symblib/node/Prod.h"
+#include "../symblib/node/Div.h"
+#include "../symblib/node/Const.h"
+#include "../symblib/manager/ExpressionManager.h"
 
 int main()
 {

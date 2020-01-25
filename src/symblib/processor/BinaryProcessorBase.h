@@ -3,7 +3,7 @@
 //
 // BinaryProcessorBase implements...
 //
-// Copyright (c) 2019 GlenSand
+// Copyright (c) 2020 Afti
 // All rights reserved.
 //
 // Date: 20.01.2020
@@ -25,8 +25,20 @@ public:
 
 	Expression			Simplify(const Expression& expr) const final;
 
+	Expression			Derivate(const Expression& expr) const final;
+
+	Expression			Integrate(const Expression& expr) const final;
+
+	Real				Compute(const Expression& expr) const final;
+
 protected:
 	virtual Expression	SimplifyImpl(Expression&& expr) const = 0;
+
+	virtual Real ComputeImpl(Expression&& expr) const = 0;
+	
+	virtual Expression	IntegrateImpl(Expression&& expr) const = 0;
+
+	virtual Expression	DerivateImpl(Expression&& expr) const = 0;
 };
 
 }
