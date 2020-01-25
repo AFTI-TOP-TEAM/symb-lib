@@ -37,8 +37,6 @@ public:
 	virtual void			SetOptimized(bool optimized) = 0;
 
 	virtual std::string		GetType() const = 0;
-
-	//virtual Expression	Integrate() const = 0;
 };
 	
 }

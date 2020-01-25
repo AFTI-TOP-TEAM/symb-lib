@@ -1,9 +1,9 @@
 #include "parser/Parser.h"
 #include "parser/Walker.h"
 
-class AstEval: public  ast::Walker {
+class AstEval: public  ast::Walker<double> {
 public:
-    double operator()(ast::nil) const override
+    double operator()(ast::Nil) const override
     {
         BOOST_ASSERT(0);
         return 0;
@@ -14,7 +14,7 @@ public:
         return n;
     }
 
-    double operator()(ast::function const& n) const override {
+    double operator()(ast::Function const& n) const override {
         double rhs = (*this)(n.first_arg);
         if(n.identifier == "log10") {
             return std::log10(rhs);
@@ -25,9 +25,9 @@ public:
         return 0;
     }
 
-    double operator()(ast::operation const& x, double lhs) const override
+    double operator()(ast::Operation const& x, double lhs) const override
     {
-        int rhs = boost::apply_visitor(*this, x.operand_);
+        double rhs = boost::apply_visitor(*this, x.operand_);
         switch (x.operator_)
         {
             case '+': return lhs + rhs;
@@ -40,7 +40,7 @@ public:
         return 0;
     }
 
-    double operator()(ast::signed_ const& x) const override
+    double operator()(ast::Signed const& x) const override
     {
         double rhs = boost::apply_visitor(*this, x.operand_);
         switch (x.sign)
@@ -54,10 +54,10 @@ public:
         return 0;
     }
 
-    double operator()(ast::program const& x) const override
+    double operator()(ast::Program const& x) const override
     {
         double state = boost::apply_visitor(*this, x.first);
-        BOOST_FOREACH(ast::operation const& oper, x.rest) {
+        BOOST_FOREACH(ast::Operation const& oper, x.rest) {
             state = (*this)(oper, state);
         }
         return state;

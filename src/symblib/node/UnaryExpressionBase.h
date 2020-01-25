@@ -17,8 +17,10 @@ namespace symb
 class UnaryExpressionBase : public ExpressionBase
 {
 public:
+    UnaryExpressionBase() = default;
 
 	virtual ~UnaryExpressionBase() = default;
+
 	explicit UnaryExpressionBase(Expression&& expr);
 	
 	// IExpression

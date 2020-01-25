@@ -1,3 +1,14 @@
+//------------------------------------------------------------------------------
+// Grammar.h
+//
+// Grammar descryption. Boost.spirit is applied to create parser.
+//
+// Copyright (c) 2020 Afti
+// All rights reserved.
+//
+// Date: 25.01.2020
+// Author: minium2
+//------------------------------------------------------------------------------
 #pragma once
 #include "parser/Iast.h"
 
@@ -11,7 +22,7 @@
 namespace parse {
 
 template <typename Iterator>
-struct Grammar : boost::spirit::qi::grammar<Iterator, ast::program(), boost::spirit::ascii::space_type>
+struct Grammar : boost::spirit::qi::grammar<Iterator, ast::Program(), boost::spirit::ascii::space_type>
 {
 
     Grammar() : Grammar::base_type(expression)
@@ -33,10 +44,10 @@ struct Grammar : boost::spirit::qi::grammar<Iterator, ast::program(), boost::spi
                 >> '(' >> expression >> *(',' >> expression) >> ')';
     }
 
-    boost::spirit::qi::rule<Iterator, ast::program(), boost::spirit::ascii::space_type> expression;
-    boost::spirit::qi::rule<Iterator, ast::program(), boost::spirit::ascii::space_type> term, pow;
-    boost::spirit::qi::rule<Iterator, ast::operand(), boost::spirit::ascii::space_type> factor;
-    boost::spirit::qi::rule<Iterator, ast::function(), boost::spirit::ascii::space_type> func;
+    boost::spirit::qi::rule<Iterator, ast::Program(), boost::spirit::ascii::space_type> expression;
+    boost::spirit::qi::rule<Iterator, ast::Program(), boost::spirit::ascii::space_type> term, pow;
+    boost::spirit::qi::rule<Iterator, ast::Operand(), boost::spirit::ascii::space_type> factor;
+    boost::spirit::qi::rule<Iterator, ast::Function(), boost::spirit::ascii::space_type> func;
 
 };
 
