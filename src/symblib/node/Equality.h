@@ -16,12 +16,18 @@
 namespace symb
 {
 
-class Equality : public BinaryExpressionBase
+class Equality final : public BinaryExpressionBase
 {
 public:
 	Equality() = default;
 	Equality(Expression&& left, Expression&& right);
 	Equality(const Expression& left, const Expression& right);
+
+	Equality(const Equality&) = delete;
+	Equality(Equality&&) = delete;
+
+	Equality operator=(Equality&&) = delete;
+	Equality operator=(const Equality&) = delete;
 	
 	virtual ~Equality() = default;
 

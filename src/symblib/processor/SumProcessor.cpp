@@ -8,7 +8,22 @@
 
 namespace symb
 {
-REGISTER_PROCESSOR(SumProcessor);
+REGISTER_PROCESSOR("+", SumProcessor);
+//------------------------------------------------------------------------------	
+Real SumProcessor::ComputeImpl(Expression&& expr) const
+{
+	return 0;
+}
+//------------------------------------------------------------------------------	
+Expression SumProcessor::IntegrateImpl(Expression&& expr) const
+{
+	return Expression();
+}
+//------------------------------------------------------------------------------	
+Expression SumProcessor::DerivateImpl(Expression&& expr) const
+{
+	return Expression();
+}
 //------------------------------------------------------------------------------	
 Expression SumProcessor::SimplifyImpl(Expression&& expr) const
 {

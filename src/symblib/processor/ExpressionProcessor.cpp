@@ -1,42 +1,48 @@
 ﻿#include "ExpressionProcessor.h"
 
-#include <typeinfo>
-
 namespace symb
 {
 //------------------------------------------------------------------------------	
 Expression ExpressionProcessor::Simplify(const Expression& expression) const
 {
 	if (expression->IsOptimized()) return expression->Copy();
-	
-	const auto& typeInfo = typeid(expression.get());
-	const auto hashCode = typeInfo.hash_code();
+	if (m_processors.count(expression->GetType())) return expression->Copy();
 
-	const auto procIt = m_processors.find(hashCode);
+	auto& processor = m_processors.at(expression->GetType());
 
-	if (procIt == m_processors.end())
-		return expression->Copy();
-
-	return procIt->second->Simplify(expression);
+	return processor->Simplify(expression);
 }
 //------------------------------------------------------------------------------
 Expression ExpressionProcessor::Integrate(const Expression& expression) const
 {
-	return expression->Copy();
+	if (m_processors.count(expression->GetType()) == 0) return Expression();
+
+	auto& processor = m_processors.at(expression->GetType());
+	
+	return processor->Integrate(expression);
 }
 //------------------------------------------------------------------------------
 Expression ExpressionProcessor::Derivate(const Expression& expression) const
 {
-	return Expression();
-	//return expression->Derivate();
+	if (m_processors.count(expression->GetType()) == 0) return Expression();
+
+	auto& processor = m_processors.at(expression->GetType());
+
+	return processor->Derivate(expression);
 }
 //------------------------------------------------------------------------------
-void ExpressionProcessor::AddProcessor(Processor&& processor)
+Real ExpressionProcessor::Compute(const Expression& expression) const
 {
-	const auto& typeInfo = typeid(processor.get());
-	const auto typeHash = typeInfo.hash_code();
+	if (m_processors.count(expression->GetType()) == 0) return 0;
 
-	m_processors[typeHash] = std::move(processor);
+	auto& processor = m_processors.at(expression->GetType());
+
+	return processor->Compute(expression);
+}
+//------------------------------------------------------------------------------
+void ExpressionProcessor::AddProcessor(const std::string& type, Processor&& processor)
+{
+	m_processors.emplace(type, std::move(processor));
 }
 //------------------------------------------------------------------------------
 ExpressionProcessor& ExpressionProcessor::Instance()

@@ -34,29 +34,32 @@ public:
 	static	ExpressionProcessor& Instance();
 	
 	Expression	Simplify(const Expression& expression) const;
+
 	Expression	Integrate(const Expression& expression) const;
+	
 	Expression	Derivate(const Expression& expression) const;
 
-	void		AddProcessor(Processor&& processor);
+	Real Compute(const Expression& expression) const;
+
+	void		AddProcessor(const std::string& type, Processor&& processor);
 
 private:
 	ExpressionProcessor() = default;
 
-	std::unordered_map<size_t, Processor>	m_processors;
+	std::unordered_map<std::string, Processor>	m_processors;
 };
 
 template <typename T>
 struct ProcessorRegister
 {
-	ProcessorRegister()
+	ProcessorRegister(const std::string& type)
 	{
-		// МНЕ ЧИСТО ПОХУЙ // MNE CHISTO POHUI //SOSAT SUCHKA
 		Processor processor(reinterpret_cast<IProcessorInner*>(new T));
 		
-		ExpressionProcessor::Instance().AddProcessor(std::move(processor));
+		ExpressionProcessor::Instance().AddProcessor(type, std::move(processor));
 	}
 };
 
-#define REGISTER_PROCESSOR(processorName) static ProcessorRegister<processorName> registernewRegister##processorName
+#define REGISTER_PROCESSOR(type, processorName) static ProcessorRegister<processorName> registernewRegister##processorName(type)
 	
 }

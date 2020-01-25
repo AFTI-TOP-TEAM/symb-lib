@@ -21,6 +21,12 @@ class Prod : public BinaryExpressionBase
 public:
 	Prod(Expression&& left, Expression&& right);
 	Prod(const Expression& left, const Expression& right);
+
+	Prod(const Prod&) = delete;
+	Prod(Prod&&) = delete;
+
+	Prod operator=(Prod&&) = delete;
+	Prod operator=(const Prod&) = delete;
 	
 	virtual ~Prod() = default;
 

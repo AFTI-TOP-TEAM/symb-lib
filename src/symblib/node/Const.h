@@ -16,12 +16,20 @@
 namespace symb
 {
 
-class Const : public Var
+class Const final : public Var
 {
 public:
-	Const(Real val = 0.0, const std::string& label = "");
-	virtual ~Const() = default;
+	explicit Const(Real val = 0.0, const std::string& label = "");
+	
+	Const(const Const&) = delete;
+	Const(Const&&) = delete;
 
+	Const operator=(Const&&) = delete;
+	Const operator=(const Const&) = delete;
+
+	virtual ~Const() = default;
+	
+	std::string GetType() const override;
 };
 
 }
