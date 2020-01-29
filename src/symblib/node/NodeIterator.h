@@ -11,48 +11,44 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "IExpression.h"
 #include <list>
+#include <iterator>
 
 namespace symb
 {
 
-class NodeIterator final
+class IExpression;
+	
+class NodeIterator final : public std::iterator<std::forward_iterator_tag, IExpression*>
 {
 public:
 
 	NodeIterator() = delete;
 	~NodeIterator() = default;
 
-	explicit NodeIterator(const Expression& expr);
+	explicit NodeIterator(IExpression* expr);
 
 	NodeIterator(const NodeIterator&) = default;
 	NodeIterator(NodeIterator&&) = default;
 	
 	NodeIterator& operator=(const NodeIterator&);
-	NodeIterator& operator=(NodeIterator&&) noexcept;
+	NodeIterator& operator=(NodeIterator&&);
 	
-    NodeIterator operator++() const;
-    NodeIterator& operator++(int);
+    NodeIterator operator++();
+    //NodeIterator& operator++(int);
 
 	bool operator==(const NodeIterator& rhs) const;
 	bool operator!=(const NodeIterator& rhs) const;
 	
-	IExpression* operator->();
+	IExpression* operator->() const;
+	IExpression* operator*() const;
 
 private:
 
-	enum class State
-	{
-		InRoot,
-		InLeft,
-		InRight
-	};
+	IExpression*	DropLeft(IExpression* exp);
 	
-	IExpression*		m_this{ nullptr };
-	IExpression*		m_root{ nullptr };
-
-	State				m_state{ State::InRoot };
+	IExpression*				m_node{ nullptr };
+	std::list<IExpression*>		m_trace;
 };
 
 }

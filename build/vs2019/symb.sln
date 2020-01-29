@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exe", "exe\exe.vcxproj", "{68555322-6733-46A0-BF1D-DA6AC023B63C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CD2B2EA-DC5D-44F8-83DE-BE5C970B319A} = {4CD2B2EA-DC5D-44F8-83DE-BE5C970B319A}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "symb", "symb\symb.vcxproj", "{4CD2B2EA-DC5D-44F8-83DE-BE5C970B319A}"
 EndProject

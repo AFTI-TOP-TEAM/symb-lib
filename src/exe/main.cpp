@@ -5,6 +5,9 @@
 #include "../symblib/node/Const.h"
 #include "../symblib/manager/ExpressionManager.h"
 
+#include "../symblib/node/AST.h"
+#include <iostream>
+
 int main()
 {
 	const auto const1 = symb::MakeExpression<symb::Const>(1);
@@ -24,6 +27,11 @@ int main()
 	const auto prod = symb::MakeExpression<symb::Prod>(summ1, summ2);
 
 	auto div = symb::MakeExpression<symb::Div>(prod, x);
-	
+
+	symb::AST ast(std::move(div));
+
+	for (const auto& e : ast)
+		std::cout << e->GetType();
+
 	return 0;
 }

@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\symblib\node\AST.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\BinaryExpressionBase.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Const.cpp" />
     <ClCompile Include="..\..\..\src\symblib\node\Diff.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="..\..\..\src\symblib\classlib\memory.h" />
     <ClInclude Include="..\..\..\src\symblib\classlib\utils.h" />
     <ClInclude Include="..\..\..\src\symblib\manager\ExpressionManager.h" />
+    <ClInclude Include="..\..\..\src\symblib\node\AST.h" />
     <ClInclude Include="..\..\..\src\symblib\node\BinaryExpressionBase.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Const.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Diff.h" />
