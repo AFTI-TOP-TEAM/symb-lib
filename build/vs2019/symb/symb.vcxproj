@@ -168,6 +168,7 @@
     <ClInclude Include="..\..\..\src\symblib\node\ExpressionBase.h" />
     <ClInclude Include="..\..\..\src\symblib\node\IExpression.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Neg.h" />
+    <ClInclude Include="..\..\..\src\symblib\node\node.h" />
     <ClInclude Include="..\..\..\src\symblib\node\NodeIterator.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Prod.h" />
     <ClInclude Include="..\..\..\src\symblib\node\Sum.h" />

@@ -1,8 +1,5 @@
-#include "../symblib/node/Sum.h"
-#include "../symblib/node/Var.h"
-#include "../symblib/node/Prod.h"
-#include "../symblib/node/Div.h"
-#include "../symblib/node/Const.h"
+#include "../symblib/node/Node.h"
+
 #include "../symblib/manager/ExpressionManager.h"
 
 #include "../symblib/node/AST.h"

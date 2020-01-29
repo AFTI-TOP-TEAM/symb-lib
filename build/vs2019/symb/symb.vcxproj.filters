@@ -150,5 +150,8 @@
     <ClInclude Include="..\..\..\src\symblib\node\AST.h">
       <Filter>ast\tree</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\symblib\node\node.h">
+      <Filter>ast</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
