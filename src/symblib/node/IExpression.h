@@ -13,7 +13,7 @@
 #include <string>
 #include <memory>
 
-#include "../Types.h"
+#include "symblib/Types.h"
 
 namespace symb
 {
@@ -30,10 +30,10 @@ public:
 
 	virtual void			SetValues(const std::unordered_map<std::string, Real>& vals) = 0;
 
-	virtual Expression		Copy() const = 0;
-	virtual Expression		RowExpression() const = 0;
+	[[nodiscard]] virtual Expression		Copy() const = 0;
+	[[nodiscard]] virtual Expression		RowExpression() const = 0;
 	
-	virtual bool			IsOptimized() const = 0;
+	[[nodiscard]] virtual bool				IsOptimized() const = 0;
 	virtual void			SetOptimized(bool optimized) = 0;
 
 	virtual std::string		GetType() const = 0;

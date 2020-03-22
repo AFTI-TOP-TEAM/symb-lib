@@ -1,6 +1,7 @@
 #include "symblib/Nodes.h"
 #include "symblib/parser/Location.h"
 #include "symblib/parser/parser/Parser.h"
+#include "symblib/parser/lexer/Lexer.h"
 #include "gtest/gtest.h"
 
 TEST(TestParser, test1)

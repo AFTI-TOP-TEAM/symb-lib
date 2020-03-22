@@ -1,8 +1,8 @@
-#include "../symblib/node/Node.h"
+#include "symblib/Nodes.h"
 
-#include "../symblib/manager/ExpressionManager.h"
+#include "symblib/manager/ExpressionManager.h"
 
-#include "../symblib/node/AST.h"
+#include "symblib/node/AST/AST.h"
 #include <iostream>
 
 int main()

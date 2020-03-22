@@ -13,7 +13,6 @@
 
 #include "../node/IExpression.h"
 #include <unordered_map>
-#include <typeinfo>
 
 #include "IProcessorInner.h"
 
@@ -32,14 +31,14 @@ public:
 	~ExpressionProcessor() = default;
 
 	static	ExpressionProcessor& Instance();
-	
-	Expression	Simplify(const Expression& expression) const;
 
-	Expression	Integrate(const Expression& expression) const;
-	
-	Expression	Derivate(const Expression& expression) const;
+	[[nodiscard]] Expression	Simplify(const Expression& expression) const;
 
-	Real Compute(const Expression& expression) const;
+	[[nodiscard]] Expression	Integrate(const Expression& expression) const;
+
+	[[nodiscard]] Expression	Derivate(const Expression& expression) const;
+
+	[[nodiscard]] Real			Compute(const Expression& expression) const;
 
 	void		AddProcessor(const std::string& type, Processor&& processor);
 
@@ -52,7 +51,7 @@ private:
 template <typename T>
 struct ProcessorRegister
 {
-	ProcessorRegister(const std::string& type)
+	explicit constexpr ProcessorRegister(const std::string& type)
 	{
 		Processor processor(reinterpret_cast<IProcessorInner*>(new T));
 		

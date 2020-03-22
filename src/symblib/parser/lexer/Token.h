@@ -10,6 +10,7 @@
 #pragma once
 
 #include <string>
+#include <utility>
 
 enum class TokenKind {
     NONE = 'N',
@@ -27,11 +28,11 @@ enum class TokenKind {
 };
 
 struct Token {
-    Token(TokenKind tokenKind, const std::string& str = "")
-        : m_str(str)
+    Token(TokenKind tokenKind, std::string str = "")
+        : m_str(std::move(str))
         , m_tokenKind(tokenKind)
     {
     }
-    std::string m_str;
-    TokenKind m_tokenKind;
+    std::string     m_str;
+    TokenKind       m_tokenKind;
 };

@@ -9,15 +9,16 @@
 //------------------------------------------------------------------------------
 #pragma once
 #include "symblib/node/IExpression.h"
-#include "symblib/parser/Location.h"
-#include "symblib/parser/lexer/Lexer.h"
+
+class Lexer;
 
 namespace parser {
+	
 class RecursiveParser {
 public:
     void parse(Lexer& lex);
 
-    inline symb::Expression getResult() const
+    [[nodiscard]] symb::Expression getResult() const
     {
         return m_exp->Copy();
     }
@@ -25,4 +26,5 @@ public:
 private:
     symb::Expression m_exp;
 };
+
 }

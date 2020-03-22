@@ -15,3 +15,4 @@
 /build/vs2019/exe/exe.vcxproj.user
 /symb_lib/Debug
 /build/vs2019/symb/.vs
+/out

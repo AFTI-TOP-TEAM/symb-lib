@@ -20,10 +20,11 @@ public:
         , m_pos(0)
         , m_currentTok(TokenKind::NONE)
     {
-        nextToken();
+	    // ReSharper disable once CppNoDiscardExpression
+	    nextToken();
     }
 
-    inline Token token() const noexcept
+    [[nodiscard]] Token token() const noexcept
     {
         return m_currentTok;
     }
@@ -31,12 +32,12 @@ public:
     /// \brief nextToken
     /// \return next token in stream
     ///
-    Token nextToken();
+    [[nodiscard]] Token nextToken();
     ///
     /// \brief position
     /// \return position of the undecoded remainder
     ///
-    inline size_t position() const noexcept
+    [[nodiscard]] size_t position() const noexcept
     {
         const auto s = m_currentTok.m_str;
         return m_pos - (s.empty() ? 1 : s.length());
@@ -45,7 +46,7 @@ public:
     /// \brief getStore
     /// \return the undecoded remainder of the text
     ///
-    const char* getStore() const
+    [[nodiscard]] const char* getStore() const
     {
         return m_input.c_str() + position();
     }
@@ -58,8 +59,7 @@ public:
 private:
     Token nextTokenImpl();
 
-private:
-    std::string m_input;
-    size_t m_pos;
-    Token m_currentTok;
+    std::string     m_input;
+    size_t          m_pos;
+    Token           m_currentTok;
 };
