@@ -1,10 +1,17 @@
 ﻿#include "Diff.h"
 
+#include "symblib/aast/expression/ExpressionType.h"
+
 namespace symb
 {
 //------------------------------------------------------------------------------	
 Diff::Diff(Expression&& left, Expression&& right)
-	:BinaryExpressionBase(std::move(left), std::move(right))
+	: NthExpression(ExpressionType::Diff, { std::move(left), std::move(right) })
+{
+}
+//------------------------------------------------------------------------------
+Diff::Diff(std::vector<Expression>&& values)
+	: NthExpression(ExpressionType::Diff, std::move(values))
 {
 }
 //------------------------------------------------------------------------------
@@ -13,19 +20,9 @@ Diff::Diff(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
-Expression Diff::RowExpression() const
+Diff::Diff()
+	: NthExpression(ExpressionType::Diff)
 {
-	return std::unique_ptr<Diff>();
-}
-//------------------------------------------------------------------------------
-std::string Diff::GetType() const
-{
-	return "-";
-}
-//------------------------------------------------------------------------------
-Expression Diff::CopyImpl(Expression&& left, Expression&& right) const
-{
-	return std::make_unique<Diff>(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------
 }

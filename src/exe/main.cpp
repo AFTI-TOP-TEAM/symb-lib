@@ -1,8 +1,6 @@
 #include "symblib/Nodes.h"
 
-#include "symblib/manager/ExpressionManager.h"
-
-#include "symblib/node/AST/AST.h"
+#include "symblib/aast/tree/AST.h"
 #include <iostream>
 
 int main()
@@ -28,7 +26,7 @@ int main()
 	symb::AST ast(std::move(div));
 
 	for (const auto& e : ast)
-		std::cout << e->GetType();
+		std::cout << int(e->Type());
 
 	return 0;
 }

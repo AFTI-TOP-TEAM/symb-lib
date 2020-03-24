@@ -11,18 +11,19 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "BinaryExpressionBase.h"
+#include "NthExpression.h"
 
 namespace symb
 {
 
-class Equality final : public BinaryExpressionBase
+class Equality final : public NthExpression<Equality>
 {
 public:
-	Equality() = default;
-	Equality(Expression&& left, Expression&& right);
-	Equality(const Expression& left, const Expression& right);
-
+	Equality();
+	explicit Equality(Expression&& left, Expression&& right);
+	explicit Equality(const Expression& left, const Expression& right);
+	explicit Equality(std::vector<Expression>&& values);
+	
 	Equality(const Equality&) = delete;
 	Equality(Equality&&) = delete;
 
@@ -30,13 +31,6 @@ public:
 	Equality operator=(const Equality&) = delete;
 	
 	virtual ~Equality() = default;
-
-	Expression		RowExpression() const override;
-
-	std::string		GetType() const override;
-
-protected:
-	Expression		CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

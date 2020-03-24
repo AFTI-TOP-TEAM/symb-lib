@@ -1,10 +1,12 @@
 ﻿#include "Sum.h"
 
+#include "symblib/aast/expression/ExpressionType.h"
+
 namespace symb
 {
 //------------------------------------------------------------------------------
 Sum::Sum(Expression&& left, Expression&& right)
-	: BinaryExpressionBase(std::move(left), std::move(right))
+	: NthExpression(ExpressionType::Sum, std::vector{ std::move(left), std::move(right) })
 {
 }
 //------------------------------------------------------------------------------
@@ -13,19 +15,14 @@ Sum::Sum(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
-Expression Sum::RowExpression() const
+Sum::Sum(std::vector<Expression>&& values)
+	: NthExpression(ExpressionType::Sum, std::move(values))
 {
-	return std::unique_ptr<Sum>();
 }
 //------------------------------------------------------------------------------
-std::string Sum::GetType() const
+Sum::Sum()
+	: NthExpression(ExpressionType::Sum)
 {
-	return "+";
 }
 //------------------------------------------------------------------------------
-Expression Sum::CopyImpl(Expression&& left, Expression&& right) const
-{
-	return std::make_unique<Sum>(std::move(left), std::move(right));
-}
-//------------------------------------------------------------------------------	
 }

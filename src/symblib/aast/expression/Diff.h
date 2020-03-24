@@ -11,18 +11,20 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "BinaryExpressionBase.h"
+#include "NthExpression.h"
 
 namespace symb
 {
 
-class Diff final : public BinaryExpressionBase
+class Diff final : public NthExpression<Diff>
 {
 public:
-
 	// Diff construction/destruction
-	Diff(Expression&& left, Expression&& right);
-	Diff(const Expression& left, const Expression& right);
+	explicit Diff(Expression&& left, Expression&& right);
+	explicit Diff(std::vector<Expression>&& values);
+
+	explicit Diff(const Expression& left, const Expression& right);
+	Diff();
 
 	Diff(const Diff&) = delete;
 	Diff(Diff&&) = delete;
@@ -31,14 +33,6 @@ public:
 	Diff operator=(const Diff&) = delete;
 		
 	virtual ~Diff() = default;
-
-	// IFunction
-	Expression		RowExpression() const override;
-
-	std::string		GetType() const override;
-protected:
-	//BinaryExpressionBase
-	Expression		CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

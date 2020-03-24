@@ -11,19 +11,21 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "BinaryExpressionBase.h"
+#include "NthExpression.h"
 
 namespace symb
 {
 
-class Sum : public BinaryExpressionBase
+class Sum : public NthExpression<Sum>
 {
 
 public:
-	// Sum construction/destruction
-	Sum(const Expression& left, const Expression& right);
-	Sum(Expression&& left, Expression&& right);
+	explicit Sum(const Expression& left, const Expression& right);
+	explicit Sum(std::vector<Expression>&& values);
+	explicit Sum(Expression&& left, Expression&& right);
 
+	Sum();
+	
 	Sum(const Sum&) = delete;
 	Sum(Sum&&) = delete;
 
@@ -31,15 +33,6 @@ public:
 	Sum operator=(const Sum&) = delete;
 	
 	virtual ~Sum() = default;
-
-	// IFunction
-	Expression		RowExpression() const final;
-
-	std::string		GetType() const override;
-
-protected:
-	// BinaryExpressionBase
-	Expression		CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

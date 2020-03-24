@@ -25,8 +25,8 @@ public:
 	BinaryExpressionBase() = default;
 
 	// IExpression
-	void				SetValues(const std::unordered_map<std::string, Real> &vals) final; 
-	Expression			Copy() const final;
+	void						SetValues(const std::unordered_map<std::string, Real> &vals) final; 
+	Expression					Copy() const final;
 
 	//Own methods
 	virtual void				SetLeftArg(Expression&& left) final;

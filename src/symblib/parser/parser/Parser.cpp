@@ -1,6 +1,5 @@
 #include "Parser.h"
 #include "symblib/Nodes.h"
-#include "symblib/manager/ExpressionManager.h"
 #include "symblib/parser/Location.h"
 #include "symblib/parser/lexer/Lexer.h"
 

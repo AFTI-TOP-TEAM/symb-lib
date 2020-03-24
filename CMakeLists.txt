@@ -8,18 +8,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(src/ src/symblib/)
 
 file(GLOB SOURCES
-    src/symblib/manager/*.cpp
-    src/symblib/node/*.cpp
-    src/symblib/node/AST/*.cpp
-    src/symblib/processor/*.cpp
+    src/symblib/aast/*.cpp
+    src/symblib/aast/tree/*.cpp
+    src/symblib/aast/expression/*.cpp
     src/symblib/classlib/*.cpp
 )
 
 file(GLOB HEADERS
-    src/symblib/manager/*.h
-    src/symblib/node/*.h
-    src/symblib/node/AST/*.h
-    src/symblib/processor/*.h
+    src/symblib/aast/*.h
+    src/symblib/aast/tree/*.h
+    src/symblib/aast/expression/*.h
     src/symblib/classlib/*.h
     src/symblib/Types.h
     src/symblib/Nodes.h

@@ -1,10 +1,12 @@
 ﻿#include "Div.h"
 
+#include "symblib/aast/expression/ExpressionType.h"
+
 namespace symb
 {
 //------------------------------------------------------------------------------
 Div::Div(Expression&& left, Expression&& right)
-	: BinaryExpressionBase(std::move(left), std::move(right))
+	: NthExpression(ExpressionType::Div, { std::move(left), std::move(right) })
 {
 }
 //------------------------------------------------------------------------------
@@ -13,19 +15,14 @@ Div::Div(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
-Expression Div::RowExpression() const
+Div::Div(std::vector<Expression>&& values)
+	: NthExpression(ExpressionType::Div, std::move(values))
 {
-	return std::unique_ptr<Div>();
 }
 //------------------------------------------------------------------------------
-std::string Div::GetType() const
+Div::Div()
+	: NthExpression(ExpressionType::Div)
 {
-	return "/";
-}
-//------------------------------------------------------------------------------
-Expression Div::CopyImpl(Expression&& left, Expression&& right) const
-{
-	return std::make_unique<Div>(std::move(left), std::move(right));
 }
 //------------------------------------------------------------------------------
 }

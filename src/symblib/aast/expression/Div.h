@@ -11,18 +11,19 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "BinaryExpressionBase.h"
+#include "NthExpression.h"
 
 namespace symb
 {
 
-class Div : public BinaryExpressionBase
+class Div : public NthExpression<Div>
 {
+	
 public:
-
-	// Div construction/destruction
-	Div(Expression&& left, Expression&& right);
-	Div(const Expression& left, const Expression& right);
+	explicit Div(Expression&& left, Expression&& right);
+	explicit Div(const Expression& left, const Expression& right);
+	explicit Div(std::vector<Expression>&& values);
+	Div();
 
 	Div(const Div&) = delete;
 	Div(Div&&) = delete;
@@ -31,15 +32,6 @@ public:
 	Div operator=(const Div&) = delete;
 	
 	virtual ~Div() = default;
-
-	// IFunction
-	Expression		RowExpression() const final;
-
-	std::string		GetType() const override;
-
-protected:
-	// BinaryExpressionBase
-	Expression		CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

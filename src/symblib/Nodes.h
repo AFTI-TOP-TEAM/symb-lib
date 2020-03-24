@@ -9,9 +9,9 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "node/Const.h"
-#include "node/Diff.h"
-#include "node/Div.h"
-#include "node/Empty.h"
-#include "node/Prod.h"
-#include "node/Sum.h"
+#include "aast/expression/Const.h"
+#include "aast/expression/Diff.h"
+#include "aast/expression/Div.h"
+#include "aast/expression/Empty.h"
+#include "aast/expression/Prod.h"
+#include "aast/expression/Sum.h"

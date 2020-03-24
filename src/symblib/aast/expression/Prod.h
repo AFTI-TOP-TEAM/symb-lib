@@ -9,18 +9,23 @@
 // Date: 20.01.2020
 // Author: Bezborodov Gleb
 //------------------------------------------------------------------------------
+
 #pragma once
 
-#include "BinaryExpressionBase.h"
+#include "NthExpression.h"
 
 namespace symb
 {
 
-class Prod : public BinaryExpressionBase
+class Prod : public NthExpression<Prod>
 {
 public:
-	Prod(Expression&& left, Expression&& right);
-	Prod(const Expression& left, const Expression& right);
+
+	explicit Prod(Expression&& left, Expression&& right);
+	explicit Prod(const Expression& left, const Expression& right);
+	explicit Prod(std::vector<Expression>&& values);
+	
+	Prod();
 
 	Prod(const Prod&) = delete;
 	Prod(Prod&&) = delete;
@@ -29,14 +34,6 @@ public:
 	Prod operator=(const Prod&) = delete;
 	
 	virtual ~Prod() = default;
-
-	// IFunction
-	Expression		RowExpression() const final;
-
-	std::string		GetType() const override;
-protected:
-	// BinaryExpressionBase
-	Expression		CopyImpl(Expression&& left, Expression&& right) const override;
 };
 
 }

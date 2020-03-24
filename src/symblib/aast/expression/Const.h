@@ -28,8 +28,6 @@ public:
 	Const operator=(const Const&) = delete;
 
 	virtual ~Const() = default;
-	
-	std::string GetType() const override;
 };
 
 }

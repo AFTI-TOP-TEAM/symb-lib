@@ -8,7 +8,8 @@
 // Author:     minium2
 //------------------------------------------------------------------------------
 #pragma once
-#include "symblib/node/IExpression.h"
+
+#include "aast/expression/IExpression.h"
 
 class Lexer;
 
