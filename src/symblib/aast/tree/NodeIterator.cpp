@@ -22,13 +22,21 @@ NodeIterator& NodeIterator::operator=(const NodeIterator& itr)
 	return *this;
 }
 //------------------------------------------------------------------------------
-NodeIterator& NodeIterator::operator=(NodeIterator&& itr)
+NodeIterator& NodeIterator::operator=(NodeIterator&& itr) noexcept
 {
 	m_node = itr.m_node;
 	m_trace = itr.m_trace;
 
 	itr.m_node = nullptr;
-	itr.m_trace.clear();
+	try
+	{
+		itr.m_trace.clear();
+	}
+	catch (const std::exception& ex)
+	{
+		// ignore
+	}
+	
 	
 	return *this;
 }
@@ -41,10 +49,10 @@ NodeIterator NodeIterator::operator++()
 	{
 		// it means now we located at the root node and have to drop to the right sub tree
 		// if it exists
-		//if (const auto node = dynamic_cast<BinaryExpressionBase*>(m_node))
-		//	m_node = DropLeft(node->GetRightArg().get());
-		//else
-		//	m_node = nullptr;
+		if (const auto node = dynamic_cast<IExpressionHolder*>(m_node))
+			m_node = DropLeft(node->GetArg(1).get());
+		else
+			m_node = nullptr;
 		
 		return *this;
 	}
@@ -59,28 +67,29 @@ NodeIterator NodeIterator::operator++()
 		
 		const auto root = m_trace.back();
 
-	/*	if (dynamic_cast<UnaryExpressionBase*>(root))
+		auto holder = root->As<IExpressionHolder>();
+		if (holder->Rang() == 1)
 		{
 			m_node = root;
 			m_trace.pop_back();
 			return *this;
-		}*/
+		}
 
-		/*if (const auto node = dynamic_cast<BinaryExpressionBase*>(root))
+		
+		if (m_node == holder->GetArg(0).get())
 		{
-			if (m_node == node->GetLeftArg().get())
-			{
-				m_node = DropLeft(node->GetRightArg().get());
-				return *this;
-			}
+			m_node = DropLeft(holder->GetArg(1).get());
+			return *this;
+		}
 
-			if (m_node == node->GetRightArg().get())
-			{
-				m_node = node;
-				m_trace.pop_back();
-				return *this;
-			}
-		}*/
+		if (m_node == holder->GetArg(0).get())
+		{
+			m_node = reinterpret_cast<IExpression*>(holder);
+			m_trace.pop_back();
+			return *this;
+		}
+
+		// TODO:: add ternary operation compatibility
 	}
 }
 //------------------------------------------------------------------------------	

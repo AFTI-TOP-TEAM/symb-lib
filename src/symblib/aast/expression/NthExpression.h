@@ -39,6 +39,7 @@ public:
 	
 	[[nodiscard]] const Expression&	GetArg(size_t rang) const final;
 	[[nodiscard]] Expression&		GetArg(size_t rang) final;
+	[[nodiscard]] size_t			Rang() const final;
 };
 
 template <typename TExpression>
@@ -104,4 +105,11 @@ Expression& NthExpression<TExpression>::GetArg(size_t rang)
 	assert(rang >= m_value.size());
 	return m_value[rang];
 }
+
+template <typename TExpression>
+size_t NthExpression<TExpression>::Rang() const
+{
+	return m_value.size();
+}
+	
 }

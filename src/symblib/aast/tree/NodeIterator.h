@@ -12,14 +12,13 @@
 #pragma once
 
 #include <list>
-#include <iterator>
 
 namespace symb
 {
 
 class IExpression;
 	
-class NodeIterator final : public std::iterator<std::forward_iterator_tag, IExpression*>
+class NodeIterator final
 {
 public:
 
@@ -32,7 +31,7 @@ public:
 	NodeIterator(NodeIterator&&) = default;
 	
 	NodeIterator& operator=(const NodeIterator&);
-	NodeIterator& operator=(NodeIterator&&);
+	NodeIterator& operator=(NodeIterator&&) noexcept;
 	
     NodeIterator operator++();
     //NodeIterator& operator++(int);

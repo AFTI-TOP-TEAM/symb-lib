@@ -19,7 +19,6 @@
 /build
 /.vs
 lib
-test
 vs2019
 build.ninja
 cmake_install.cmake

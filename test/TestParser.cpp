@@ -2,6 +2,7 @@
 #include "symblib/parser/Location.h"
 #include "symblib/parser/parser/Parser.h"
 #include "symblib/parser/lexer/Lexer.h"
+#include "symblib/aast/expression/ExpressionType.h"
 #include "gtest/gtest.h"
 
 TEST(TestParser, test1)
@@ -9,8 +10,8 @@ TEST(TestParser, test1)
     auto lex = Lexer("3 + 4 + 6");
     parser::RecursiveParser parser;
     parser.parse(lex);
-    auto tree = parser.getResult();
-   // ASSERT_EQ(tree->Type(), "+");
+    const auto tree = parser.getResult();
+	ASSERT_TRUE(tree->Type() == symb::ExpressionType::Sum);
     auto p = dynamic_cast<symb::Sum*>(tree.get());
     //ASSERT_EQ(p->GetLeftArg()->GetType(), "Const");
 }
