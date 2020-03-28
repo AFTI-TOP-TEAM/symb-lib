@@ -9,17 +9,14 @@
 //------------------------------------------------------------------------------
 #pragma once
 
+#include "symblib/Config.h"
+#include "symblib/Types.h"
+
 #include <unordered_map>
 #include <string>
-#include <memory>
-
-#include "symblib/Types.h"
 
 namespace symb
 {
-
-class IExpression;
-using Expression = std::shared_ptr<IExpression>;
 
 enum class ExpressionType : unsigned char;
 	

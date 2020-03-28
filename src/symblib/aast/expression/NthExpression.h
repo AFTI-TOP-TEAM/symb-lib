@@ -21,6 +21,7 @@ namespace symb
 template <typename TExpression>
 class NthExpression : public ExpressionBase<TExpression, std::vector<Expression>>, public IExpressionHolder
 {
+	using Base = ExpressionBase<TExpression, std::vector<Expression>>;
 public:
 	virtual ~NthExpression() = default;
 
@@ -39,18 +40,18 @@ public:
 	
 	[[nodiscard]] const Expression&	GetArg(size_t rang) const final;
 	[[nodiscard]] Expression&		GetArg(size_t rang) final;
-	[[nodiscard]] size_t			Rang() const final;
+	[[nodiscard]] size_t			Rank() const final;
 };
 
 template <typename TExpression>
 NthExpression<TExpression>::NthExpression(ExpressionType type, std::vector<Expression>&& value)
-	: ExpressionBase(type, std::move(value))
+	: Base(type, std::move(value))
 {
 }
 
 template <typename TExpression>
 NthExpression<TExpression>::NthExpression(ExpressionType type, std::initializer_list<Expression>&& value)
-	: ExpressionBase(type)
+	: Base(type)
 {
 	for (auto&& val : value)
 		m_value.emplace_back(std::move(val));
@@ -58,7 +59,7 @@ NthExpression<TExpression>::NthExpression(ExpressionType type, std::initializer_
 
 template <typename TExpression>
 NthExpression<TExpression>::NthExpression(ExpressionType type)
-	: ExpressionBase(type)
+	: Base(type)
 {
 }
 
@@ -69,7 +70,6 @@ Expression NthExpression<TExpression>::Copy() const
 	for (const auto& arg : m_value)
 		copies.emplace_back(arg->Copy());
 	return MakeExpression<TExpression>(std::move(copies));
-	//return Expression();
 }
 
 template <typename TExpression>
@@ -107,7 +107,7 @@ Expression& NthExpression<TExpression>::GetArg(size_t rang)
 }
 
 template <typename TExpression>
-size_t NthExpression<TExpression>::Rang() const
+size_t NthExpression<TExpression>::Rank() const
 {
 	return m_value.size();
 }

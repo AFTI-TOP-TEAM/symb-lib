@@ -30,7 +30,7 @@ public:
 
 	[[nodiscard]] virtual const Expression& GetArg(size_t rang) const = 0;
 	[[nodiscard]] virtual Expression&		GetArg(size_t rang) = 0;
-	[[nodiscard]] virtual size_t			Rang() const = 0;
+	[[nodiscard]] virtual size_t			Rank() const = 0;
 };
 	
 }

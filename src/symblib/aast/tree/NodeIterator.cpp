@@ -68,7 +68,7 @@ NodeIterator NodeIterator::operator++()
 		const auto root = m_trace.back();
 
 		auto holder = root->As<IExpressionHolder>();
-		if (holder->Rang() == 1)
+		if (holder->Rank() == 1)
 		{
 			m_node = root;
 			m_trace.pop_back();
