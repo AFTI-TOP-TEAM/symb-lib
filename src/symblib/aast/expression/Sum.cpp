@@ -1,12 +1,13 @@
 ﻿#include "Sum.h"
 
 #include "symblib/aast/expression/ExpressionType.h"
+#include <array>
 
 namespace symb
 {
 //------------------------------------------------------------------------------
 Sum::Sum(Expression&& left, Expression&& right)
-	: NthExpression(ExpressionType::Sum, std::vector{ std::move(left), std::move(right) })
+	: Base(ExpressionType::Sum, { std::move(left), std::move(right) })
 {
 }
 //------------------------------------------------------------------------------
@@ -15,13 +16,13 @@ Sum::Sum(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
-Sum::Sum(std::vector<Expression>&& values)
-	: NthExpression(ExpressionType::Sum, std::move(values))
+Sum::Sum(Arguments&& values)
+	: Base(ExpressionType::Sum, std::move(values))
 {
 }
 //------------------------------------------------------------------------------
 Sum::Sum()
-	: NthExpression(ExpressionType::Sum)
+	: Base(ExpressionType::Sum)
 {
 }
 //------------------------------------------------------------------------------

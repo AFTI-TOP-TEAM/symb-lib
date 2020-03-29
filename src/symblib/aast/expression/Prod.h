@@ -17,13 +17,14 @@
 namespace symb
 {
 
-class Prod : public NthExpression<Prod>
+class Prod : public NthExpression<Prod, 2>
 {
+	using Base = NthExpression<Prod, 2>;
 public:
 
 	explicit Prod(Expression&& left, Expression&& right);
 	explicit Prod(const Expression& left, const Expression& right);
-	explicit Prod(std::vector<Expression>&& values);
+	explicit Prod(Arguments&& values);
 	
 	Prod();
 

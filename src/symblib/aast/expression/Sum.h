@@ -16,12 +16,12 @@
 namespace symb
 {
 
-class Sum : public NthExpression<Sum>
+class Sum : public NthExpression<Sum, 2>
 {
-
+	using Base = NthExpression<Sum, 2>;
 public:
 	explicit Sum(const Expression& left, const Expression& right);
-	explicit Sum(std::vector<Expression>&& values);
+	explicit Sum(Arguments&& values);
 	explicit Sum(Expression&& left, Expression&& right);
 
 	Sum();

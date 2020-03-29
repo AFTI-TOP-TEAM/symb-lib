@@ -6,12 +6,12 @@ namespace symb
 {
 //------------------------------------------------------------------------------	
 Equality::Equality()
-	: NthExpression(ExpressionType::Equality)
+	: Base(ExpressionType::Equality)
 {
 }
 //------------------------------------------------------------------------------
 Equality::Equality(Expression&& left, Expression&& right)
-	: NthExpression(ExpressionType::Equality, { std::move(left), std::move(right) })
+	: Base(ExpressionType::Equality, { std::move(left), std::move(right) })
 {
 }
 //------------------------------------------------------------------------------
@@ -20,8 +20,8 @@ Equality::Equality(const Expression& left, const Expression& rigHt)
 {
 }
 //------------------------------------------------------------------------------
-Equality::Equality(std::vector<Expression>&& values)
-	: NthExpression(ExpressionType::Equality, std::move(values))
+Equality::Equality(Arguments&& values)
+	: Base(ExpressionType::Equality, std::move(values))
 {
 }
 //------------------------------------------------------------------------------

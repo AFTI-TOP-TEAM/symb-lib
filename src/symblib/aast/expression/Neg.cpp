@@ -6,12 +6,12 @@ namespace symb
 {
 //------------------------------------------------------------------------------	
 Neg::Neg()
-	: NthExpression(ExpressionType::Neg)
+	: Base(ExpressionType::Neg)
 {
 }
 //------------------------------------------------------------------------------
 Neg::Neg(Expression&& expr)
-    : NthExpression(ExpressionType::Neg, { std::move(expr) })
+    : Base(ExpressionType::Neg, { std::move(expr) })
 {
 }
 //------------------------------------------------------------------------------
@@ -20,8 +20,8 @@ Neg::Neg(const Expression& expr)
 {
 }
 //------------------------------------------------------------------------------
-Neg::Neg(std::vector<Expression>&& values)
-	: NthExpression(ExpressionType::Neg, std::move(values))
+Neg::Neg(Arguments&& values)
+	: Base(ExpressionType::Neg, std::move(values))
 {
 }
 //------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ namespace symb
 {
 //------------------------------------------------------------------------------
 Div::Div(Expression&& left, Expression&& right)
-	: NthExpression(ExpressionType::Div, { std::move(left), std::move(right) })
+	: Base(ExpressionType::Div, { std::move(left), std::move(right) })
 {
 }
 //------------------------------------------------------------------------------
@@ -15,13 +15,13 @@ Div::Div(const Expression& left, const Expression& right)
 {
 }
 //------------------------------------------------------------------------------
-Div::Div(std::vector<Expression>&& values)
-	: NthExpression(ExpressionType::Div, std::move(values))
+Div::Div(Arguments&& values)
+	: Base(ExpressionType::Div, std::move(values))
 {
 }
 //------------------------------------------------------------------------------
 Div::Div()
-	: NthExpression(ExpressionType::Div)
+	: Base(ExpressionType::Div)
 {
 }
 //------------------------------------------------------------------------------

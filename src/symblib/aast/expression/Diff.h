@@ -16,13 +16,12 @@
 namespace symb
 {
 
-class Diff final : public NthExpression<Diff>
+class Diff final : public NthExpression<Diff, 2>
 {
+	using Base = NthExpression<Diff, 2>;
 public:
-	// Diff construction/destruction
 	explicit Diff(Expression&& left, Expression&& right);
-	explicit Diff(std::vector<Expression>&& values);
-
+	explicit Diff(Arguments&& values);
 	explicit Diff(const Expression& left, const Expression& right);
 	Diff();
 

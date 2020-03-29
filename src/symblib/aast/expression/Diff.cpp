@@ -6,12 +6,12 @@ namespace symb
 {
 //------------------------------------------------------------------------------	
 Diff::Diff(Expression&& left, Expression&& right)
-	: NthExpression(ExpressionType::Diff, { std::move(left), std::move(right) })
+	: Base(ExpressionType::Diff, { std::move(left), std::move(right) })
 {
 }
 //------------------------------------------------------------------------------
-Diff::Diff(std::vector<Expression>&& values)
-	: NthExpression(ExpressionType::Diff, std::move(values))
+Diff::Diff(Arguments&& values)
+	: Base(ExpressionType::Diff, std::move(values))
 {
 }
 //------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ Diff::Diff(const Expression& left, const Expression& right)
 }
 //------------------------------------------------------------------------------
 Diff::Diff()
-	: NthExpression(ExpressionType::Diff)
+	: Base(ExpressionType::Diff)
 {
 }
 //------------------------------------------------------------------------------

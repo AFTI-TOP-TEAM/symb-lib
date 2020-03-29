@@ -14,13 +14,14 @@
 namespace symb
 {
 
-class Neg final : public NthExpression<Neg>
+class Neg final : public NthExpression<Neg, 1>
 {
+    using Base = NthExpression<Neg, 1>;
 public:
     Neg();
     explicit Neg(Expression&& expr);
     explicit Neg(const Expression& expr);
-    explicit Neg(std::vector<Expression>&& values);
+    explicit Neg(Arguments&& values);
 	
     Neg(const Neg&) = delete;
 	

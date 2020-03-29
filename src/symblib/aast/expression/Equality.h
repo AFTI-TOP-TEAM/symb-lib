@@ -16,13 +16,14 @@
 namespace symb
 {
 
-class Equality final : public NthExpression<Equality>
+class Equality final : public NthExpression<Equality, 1>
 {
+	using Base = NthExpression<Equality, 1>;
 public:
 	Equality();
 	explicit Equality(Expression&& left, Expression&& right);
 	explicit Equality(const Expression& left, const Expression& right);
-	explicit Equality(std::vector<Expression>&& values);
+	explicit Equality(Arguments&& values);
 	
 	Equality(const Equality&) = delete;
 	Equality(Equality&&) = delete;

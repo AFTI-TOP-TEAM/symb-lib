@@ -16,13 +16,13 @@
 namespace symb
 {
 
-class Div : public NthExpression<Div>
+class Div : public NthExpression<Div, 2>
 {
-	
+	using Base = NthExpression<Div, 2>;
 public:
 	explicit Div(Expression&& left, Expression&& right);
 	explicit Div(const Expression& left, const Expression& right);
-	explicit Div(std::vector<Expression>&& values);
+	explicit Div(Arguments&& values);
 	Div();
 
 	Div(const Div&) = delete;
